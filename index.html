@@ -27,17 +27,25 @@ body {
   font-size: 18px; line-height: 1.65;
 }
 .wrap { max-width: 640px; margin: 0 auto; padding: 40px 24px 96px; }
-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px 20px; margin-bottom: 64px; }
+header { position: relative; padding: 18px 0; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px 20px; margin-bottom: 64px; }
+header::before, header::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: #bf4e0b; box-shadow: 0 0 0 100vmax #bf4e0b; clip-path: inset(0 -100vmax); }
+header::before { top: 0; }
+header::after { bottom: 0; }
 header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 24px; }
-header nav a { color: var(--fg); font-size: 17px; text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
+header nav a, header .about-link { color: var(--fg); font-size: 17px; text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
+header .about-link { justify-self: end; }
+header .about-link:hover { border-bottom-color: var(--rule); }
+header .about-link.active { border-bottom-color: var(--fg); }
+header .about-link:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 header nav a:hover { border-bottom-color: var(--rule); }
 header nav a.active { border-bottom-color: var(--fg); }
 header nav a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 @media (max-width: 759px) {
   header { grid-template-columns: 1fr auto; margin-bottom: 48px; }
   header nav { grid-column: 1 / -1; grid-row: 2; justify-content: center; gap: 4px 22px; }
+  header .about-link { grid-column: 2; grid-row: 1; }
   header }
-header .name { white-space: nowrap; font-size: 32px; line-height: 1.2; font-weight: 600; text-decoration: none; color: var(--fg); }
+header .name { white-space: nowrap; font-size: 32px; line-height: 40px; font-weight: 600; text-decoration: none; color: var(--fg); }
 a { color: var(--link); text-decoration-color: var(--rule); text-underline-offset: 3px; }
 a:hover { text-decoration-color: var(--fg); }
 a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
@@ -66,7 +74,7 @@ li .date { color: var(--muted); font-size: 15px; white-space: nowrap; }
 .portrait { float: right; width: 150px; margin: 0 0 16px 24px; }
 .portrait img { display: block; width: 100%; height: auto; border-radius: 2px; }
 .portrait figcaption { margin-top: 6px; font-size: 14px; line-height: 1.3; color: var(--muted); text-align: center; }
-@media (max-width: 420px) { .portrait { width: 110px; margin-left: 16px; } header .name { font-size: 26px; } }
+@media (max-width: 420px) { .portrait { width: 110px; margin-left: 16px; } header .name { font-size: 26px; } header nav { gap: 4px 16px; } header nav a { font-size: 16px; } }
 @media (min-width: 760px) {
   .wrap { max-width: 880px; padding-top: 56px; }
   .portrait { width: 300px; margin-left: 40px; }
@@ -91,6 +99,7 @@ main { flex: 1; display: flex; flex-direction: column; }
 @media (max-width: 520px) { .lead { font-size: 23px; } }
 .name .initial { color: #bf4e0b; }
 .home-date { margin: -4px 0 0; text-align: center; font-size: 15px; color: var(--muted); }
+.home-art { display: block; width: min(100%, 520px); height: auto; margin: 28px auto 0; }
 .hint { margin: 0 0 20px 20px; font-size: 15px; font-style: italic; color: var(--muted); }
 .cta { margin-top: 64px; }
 .cta p { color: var(--muted); font-size: 16px; margin-bottom: 8px; }
@@ -118,9 +127,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     <nav aria-label="Main">
       <a href="#/principles" data-nav="principles">Principles</a>
       <a href="#/archive" data-nav="archive">Essays</a>
+      <a href="#/newsletter" data-nav="newsletter">Newsletter</a>
       <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;authuser=1&amp;user=Aq-NkHkAAAAJ" target="_blank" rel="noopener" title="Google Scholar page">Research</a>
-      <a href="#/about" data-nav="about">About</a>
-    </nav>
+      </nav>
+    <a class="about-link" href="#/about" data-nav="about">About</a>
   </header>
 
   <main>
@@ -130,6 +140,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <li><a href="#/post/work-algorithms-and-male-escorts">Work, algorithms and male escorts</a></li>
       </ul>
       <p class="home-date">October 2026</p>
+      <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEwMCAxMDAgNjIwIDQ4MCIgd2lkdGg9IjYyMCIgaGVpZ2h0PSI0ODAiPgogIDx0aXRsZT5QZXJzb24gYXQgYSBkZXNrIHVzaW5nIGEgY29tcHV0ZXIsIGluIHRoZSByZWR1Y3RpdmUgbGluZSBzdHlsZSBvZiBQaWNhc3NvJ3MgQnVsbDwvdGl0bGU+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTQxNDE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPCEtLSBvbmUgY29uZmlkZW50IGNvbnRvdXI6IG5hcGUsIGJhY2ssIHNlYXQsIHRoaWdoIHRvIHRoZSBrbmVlIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDI1OCAyMDAgQyAyMzIgMjUyIDE5NiAzMjIgMTk2IDM5MiBDIDE5NiA0MjQgMjM2IDQzMiAyOTIgNDI0IEMgMzQyIDQxNyAzODAgNDE2IDQxNCA0MzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAyNjIgMjA2IEMgMjM4IDI1NiAyMDQgMzIyIDIwMyAzODgiIG9wYWNpdHk9Ii44Ii8+CiAgICA8IS0tIGhlYWQ6IGJhY2sgb2Ygc2t1bGwsIGJyb3csIG5vc2UsIG1vdXRoLCBjaGluIGluIGEgc2luZ2xlIHN0cm9rZSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNyIgZD0iTSAyNTggMjA4IEMgMjM0IDE2MCAyNzAgMTE0IDMxNiAxMjAgQyAzNTIgMTI2IDM2NCAxNjYgMzU2IDE4OCBMIDM3MiAyMDYgTCAzNTQgMjEyIEwgMzU0IDIyOCBDIDM1MiAyNDYgMzMwIDI1NCAzMDQgMjQ2Ii8+CiAgICA8IS0tIGNoZXN0IGxpbmUsIGRyYXduIGxpZ2h0LCBzbyB0aGUgdG9yc28gaXMgaW1wbGllZCByYXRoZXIgdGhhbiBvdXRsaW5lZCAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMyIgZD0iTSAzMDQgMjQ2IEMgMzI2IDMwMCAzMjAgMzYwIDMwMCA0MDgiLz4KICAgIDwhLS0gdGhlIGFybTogb25lIGxvbmcgdGhpbiBsaW5lIHRvIHRoZSBrZXlzLCBhbmQgYSBmbGljayBmb3IgdGhlIGhhbmQgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyODQgMjYyIEMgMzE2IDMyNiAzNTIgMzYwIDQyMCAzODAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQyMCAzODAgQyA0MzYgMzc2IDQ0NCAzNzggNDQ4IDM4NiIvPgogICAgPCEtLSBsb3dlciBsZWcgYW5kIGZvb3QgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNDE0IDQzMCBMIDQwNCA1NjAgTCA0NTIgNTYyIi8+CiAgICA8IS0tIGNoYWlyIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDE4OCAyOTYgQyAxNTYgMzUwIDE1OCA0MTggMTkwIDQ2MiBMIDE4NiA1NjAiLz4KICAgIDwhLS0gZGVzayAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMyIgZD0iTSAxMjAgMzk0IEwgNzAwIDM4NiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDE1MCAzOTQgTCAxNDggNTYwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMiIGQ9Ik0gNjY0IDM4OCBMIDY2OCA1NjAiLz4KICAgIDwhLS0gbGFwdG9wOiBrZXlzLCBzY3JlZW4sIGFuZCB0d28gc3Ryb2tlcyBvZiB0ZXh0IC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDQwNCAzOTAgTCA0MzggMzcyIEwgNjAwIDM3NCBMIDU5MCAzODkiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMyIgZD0iTSA0MzggMzcyIEwgNDY0IDIzMiBMIDYwNiAyMjIgTCA2MDAgMzc0Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gNDkwIDI3NiBMIDU4MCAyNzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSA0OTQgMzA2IEwgNTQ4IDMwMyIvPgogIDwvZz4KICA8IS0tIHRoZSBleWUgLS0+CiAgPGNpcmNsZSBjeD0iMzIyIiBjeT0iMTYyIiByPSI1LjUiIGZpbGw9IiMxNDE0MTQiLz4KPC9zdmc+Cg==" width="620" height="480" alt="Line drawing of a person sitting at a desk, typing on a laptop">
 
       <div class="band">
         <p class="bio">Get three new insights to your inbox every Monday for free</p>
@@ -140,6 +151,17 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       </form>
       <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Powered by Buttondown.</a></p>
       </div>
+    </section>
+
+    <section id="newsletter" class="view">
+      <h2 class="sr-only">Newsletter</h2>
+      <p class="lead">Get three new insights to your inbox every Monday for free</p>
+      <form class="subscribe" action="https://buttondown.com/api/emails/embed-subscribe/Lukewjennings" method="post" target="_blank">
+        <label class="sr-only" for="bd-email-3">Email</label>
+        <input type="email" name="email" id="bd-email-3" placeholder="Email" required>
+        <input type="submit" value="Try it">
+      </form>
+      <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Powered by Buttondown.</a></p>
     </section>
 
     <section id="about" class="view">
@@ -337,10 +359,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     'goals-are-the-death-of-interesting': 'Goals are the Death of Interesting',
     'why-your-health-is-all-you-have': 'Why Your Health is All You Have'
   };
-  var views = { about: document.getElementById('about'), principles: document.getElementById('principles'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
+  var views = { newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), principles: document.getElementById('principles'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
   function route() {
     var h = location.hash || '#/';
-    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/principles') === 0 ? 'principles' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
+    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/principles') === 0 ? 'principles' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
     if (key === 'post') {
       var t = titles[h.slice(7)] || 'Post';
       document.getElementById('post-title').textContent = t;
@@ -353,13 +375,15 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       document.title = t + ' | Luke W. Jennings';
     } else if (key === 'principles') {
       document.title = 'Principles | Luke W. Jennings';
+    } else if (key === 'newsletter') {
+      document.title = 'Newsletter | Luke W. Jennings';
     } else if (key === 'about') {
       document.title = 'About | Luke W. Jennings';
     } else {
       document.title = key === 'archive' ? 'Essays | Luke W. Jennings' : 'Luke W. Jennings';
     }
     for (var k in views) views[k].classList.toggle('on', k === key);
-    var cur = key === 'post' ? 'archive' : key, links = document.querySelectorAll('header nav a[data-nav]');
+    var cur = key === 'post' ? 'archive' : key, links = document.querySelectorAll('header a[data-nav]');
     for (var n = 0; n < links.length; n++) {
       var on = links[n].getAttribute('data-nav') === cur;
       links[n].classList.toggle('active', on);
