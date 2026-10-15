@@ -123,6 +123,14 @@ main { flex: 1; display: flex; flex-direction: column; }
 .intro-link:hover { text-decoration-color: var(--fg); }
 .essays-intro { max-width: 760px; margin: 0 auto 56px; text-align: center; font-size: 22px; line-height: 1.55; color: var(--fg); }
 @media (max-width: 520px) { .essays-intro { font-size: 19px; margin-bottom: 40px; } }
+.site-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 12px; margin: 32px 0 0; font-size: 15px; color: var(--muted); }
+.site-footer a { color: var(--muted); text-underline-offset: 3px; }
+.site-footer a:hover { color: var(--fg); }
+.legal b { font-weight: 600; }
+.footer-name { margin: 48px 0 0; text-align: center; font-size: 32px; line-height: 40px; font-weight: 600; color: var(--fg); }
+.footer-name .initial { color: #bf4e0b; }
+.footer-name + .site-footer { margin-top: 12px; }
+@media (max-width: 420px) { .footer-name { font-size: 26px; } }
 .quads { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .quad { padding: 40px 40px 28px 0; min-height: 200px; }
 .quad:nth-child(even) { padding-left: 40px; padding-right: 0; border-left: 1px solid var(--rule); }
@@ -185,7 +193,6 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <input type="email" name="email" id="bd-email" placeholder="Give me your email or else" required>
         <input type="submit" value="OK, fine">
       </form>
-      <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Powered by Buttondown.</a></p>
       </div>
       <div class="intro">
         <div class="intro-left">
@@ -196,6 +203,45 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <h3 class="intro-sub">Previous questions answered in my newsletter:</h3>
         </div>
       </div>
+      <div class="footer-name"><span class="initial">L</span>uke W. Jennings</div>
+      <div class="site-footer"><span>© 2026 Luke W. Jennings</span><span aria-hidden="true">·</span><a href="#/privacy">Privacy &amp; Terms of Use</a><span aria-hidden="true">·</span><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Forms by Buttondown</a></div>
+    </section>
+
+    <section id="privacy" class="view">
+      <h2 class="sr-only">Privacy &amp; Terms of Use</h2>
+      <article class="legal">
+        <h1>Privacy &amp; Terms of Use</h1>
+        <div class="meta">Updated October 2026</div>
+        <p>By using this website, you agree to this policy and these terms. I’ve tried to write them in plain English and keep them short. “I”, “me” and “my” mean Luke W. Jennings, who runs this site. “You” means anyone visiting it.</p>
+        <h3>Earnings disclaimer</h3>
+        <p>You should assume I make no money from this site. At the time of writing there are no ads, no sponsors and no affiliate links on it. If that ever changes, I’ll tell you plainly where the link or sponsorship is. Until then, any enthusiasm you detect for a book, product or service is entirely sincere, and sadly unpaid.</p>
+        <h3>Medical and general information</h3>
+        <p>I’m a doctor, but I’m not your doctor. Everything on this site is general information and personal opinion, written to be thought-provoking, not as medical, psychological, legal or financial advice. Reading it does not create a doctor–patient relationship. Some essays draw on my own experiences, and yours may be quite different. Please speak to a qualified professional about your own situation, and in an emergency call your local emergency number (000 in Australia).</p>
+        <p>The views here are mine alone. They are not the views of any employer, hospital, university or organisation I am, or have been, connected with.</p>
+        <h3>What I collect</h3>
+        <p><b>Email addresses.</b> If you subscribe to my newsletter, you give me your email address. I use it to send you the newsletter and related emails, such as a welcome message. You can unsubscribe at any time using the link at the bottom of every email. I won’t sell, rent or trade your email address.</p>
+        <p>Your address is stored and sent to by Buttondown, the service I use to run the newsletter. Buttondown has its own privacy policy, which you can find on its website.</p>
+        <p><b>Server information.</b> Like most websites, the company that hosts this site may keep standard server logs, such as your IP address, browser type and the pages you request. I use that only to keep the site running and secure.</p>
+        <h3>Cookies and tracking</h3>
+        <p>This site doesn’t use advertising or analytics cookies, and I don’t track you across other websites. If that changes, I’ll update this page first. The site does load its typeface from Google Fonts, which means your browser contacts Google’s servers when a page loads. Google’s own privacy policy applies to that.</p>
+        <h3>Links to other sites</h3>
+        <p>Some pages link to other websites. I don’t control them and I’m not responsible for their content or how they handle your information. It’s worth reading their policies before you share anything with them.</p>
+        <h3>Security</h3>
+        <p>I take reasonable steps to protect the information you give me, but no transfer of data over the internet is completely secure, so I can’t guarantee it.</p>
+        <h3>Children</h3>
+        <p>This site is written for adults. I don’t knowingly collect personal information from children. If you think a child has subscribed, reply to any newsletter email and I’ll delete it.</p>
+        <h3>Your rights</h3>
+        <p>You can ask to see the personal information I hold about you, to correct it, or to have it deleted. For newsletter subscribers, the quickest option is to unsubscribe. To have your details deleted entirely, reply to any newsletter email. If you live in the European Economic Area or the United Kingdom, you also have the rights given by your local data protection law, including the right to complain to your data protection authority. In Australia, you can complain to the Office of the Australian Information Commissioner.</p>
+        <h3>Terms of use</h3>
+        <p><b>Content.</b> Unless stated otherwise, everything on this site, including the essays, drawings, videos and design, is © 2026 Luke W. Jennings, all rights reserved. You’re welcome to share a link, and to quote short excerpts with credit and a link back. Please don’t republish whole essays or reuse the drawings without asking me first.</p>
+        <p><b>No guarantees.</b> The site and everything on it is provided “as is”. I don’t promise it is accurate, complete or up to date, and, to the extent the law allows, I’m not liable for any loss that comes from using or relying on it. Nothing here limits any rights you have under the Australian Consumer Law or other laws that can’t be excluded.</p>
+        <h3>Changes to this page</h3>
+        <p>I may update this page from time to time. When I do, I’ll change the date at the top. If you keep using the site after a change, you accept the updated version.</p>
+        <h3>Governing law</h3>
+        <p>This policy and your use of this site are governed by the laws of Victoria, Australia.</p>
+        <h3>Contact</h3>
+        <p>Questions about any of this? Reply to any newsletter email and it will land with me.</p>
+      </article>
     </section>
 
     <section id="thanks" class="view">
@@ -214,7 +260,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <input type="email" name="email" id="bd-email-3" placeholder="Give me your email or else" required>
         <input type="submit" value="OK, fine">
       </form>
-      <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Powered by Buttondown.</a></p>
+      <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Forms by Buttondown.</a></p>
     </section>
 
     <section id="about" class="view">
@@ -433,11 +479,11 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     'goals-are-the-death-of-interesting': 'Does having goals make you boring?',
     'why-your-health-is-all-you-have': 'Is health really that important?'
   };
-  var views = { thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), principles: document.getElementById('principles'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
+  var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), principles: document.getElementById('principles'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
   var current = null;
   function route() {
     var h = current !== null ? current : (location.hash || '#/');
-    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/principles') === 0 ? 'principles' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
+    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/principles') === 0 ? 'principles' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/privacy') === 0 ? 'privacy' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
     if (key === 'post') {
       var t = titles[h.slice(7)] || 'Post';
       document.getElementById('post-title').textContent = t;
@@ -455,6 +501,8 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       document.title = 'Newsletter | Luke W. Jennings';
     } else if (key === 'thanks') {
       document.title = 'Thanks | Luke W. Jennings';
+    } else if (key === 'privacy') {
+      document.title = 'Privacy & Terms of Use | Luke W. Jennings';
     } else if (key === 'about') {
       document.title = 'About | Luke W. Jennings';
     } else {
