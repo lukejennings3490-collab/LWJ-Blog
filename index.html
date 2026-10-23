@@ -146,6 +146,7 @@ main { flex: 1; display: flex; flex-direction: column; }
 .intro .intro-sub { margin: 0 0 28px; font-size: 24px; line-height: 1.3; font-weight: 600; }
 .intro .intro-lede { margin: 0 0 28px; }
 .intro-link { display: block; width: fit-content; max-width: 100%; margin: 0 0 20px; font-size: 20px; line-height: 1.6; color: var(--fg); text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.x-link { display: inline-flex; align-items: center; }
 .intro-link:hover { text-decoration-color: var(--fg); }
 .essays-intro { max-width: 760px; margin: 0 auto 56px; text-align: center; font-size: 22px; line-height: 1.55; color: var(--fg); }
 @media (max-width: 520px) { .essays-intro { font-size: 19px; margin-bottom: 40px; } }
@@ -219,7 +220,6 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     <a class="name" href="#/"><span class="initial">L</span>uke W. Jennings</a>
     <nav aria-label="Main">
       <a href="#/archive" data-nav="archive">Essays</a>
-      <a href="#/principles" data-nav="principles">Principles</a>
       <a href="#/newsletter" data-nav="newsletter">Newsletter</a>
       </nav>
     <a class="about-link" href="#/about" data-nav="about">About</a>
@@ -230,10 +230,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       <p class="lead">Good ideas, in written form<br><em class="lead-sub">New articles every week.</em></p>
       <p class="lead">Try my latest one:</p>
       <ul>
-        <li><a href="#/post/being-wealthy-means-being-a-business-owner">Being wealthy means being a business owner</a></li>
+        <li><a href="#/post/make-it-for-you">Make it for you</a></li>
       </ul>
       <p class="home-date">October 2026</p>
-      <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYwIDk1IDY5MCA0NDAiIHdpZHRoPSI4MDAiIGhlaWdodD0iNTEwIj4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE0MTQxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgIDwhLS0gZ3JvdW5kIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBkPSJNIDcwIDUyMCBMIDc0MCA1MjAiLz4KICAgIDwhLS0gc3RhbmQ6IHR3byBwb3N0cywgc3RyaXBlZCBhd25pbmcgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gMjMwIDUyMCBWIDE1MCBNIDY0MCA1MjAgViAxNTAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyMTAgMTUwIEggNjYwIEwgNjQwIDEwNSBIIDIzMCBaIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyOTAgMTUwIEwgMjgyIDEwNSBNIDM1MCAxNTAgTCAzNDYgMTA1IE0gNDEwIDE1MCBWIDEwNSBNIDQ3MCAxNTAgTCA0NzQgMTA1IE0gNTMwIDE1MCBMIDUzOCAxMDUgTSA1OTAgMTUwIEwgNTk4IDEwNSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMjEwIDE1MCBxIDIwIDIyIDQwIDAgcSAyMCAyMiA0MCAwIHEgMjAgMjIgNDAgMCBxIDIwIDIyIDQwIDAgcSAyMCAyMiA0MCAwIHEgMjAgMjIgNDAgMCBxIDIwIDIyIDQwIDAgcSAyMCAyMiA0MCAwIHEgMjAgMjIgNDAgMCBxIDIwIDIyIDQwIDAgcSAyMCAyMiA0MCAwICIvPgogICAgPCEtLSB0YWJsZSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAyMDAgMzgwIEggNjcwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gMjI1IDM4MCBWIDUyMCBNIDY0NSAzODAgViA1MjAiLz4KICAgIDwhLS0gZnJvbnQgc2lnbiAtLT4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAzMDAgNDEwIEggNTcwIFYgNDkwIEggMzAwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAzMzUgNDQwIEggMzk1IE0gMzM1IDQ2MiBIIDM4MCIvPgogICAgPCEtLSBzaWduOiBsZW1vbiAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA0MDAgNDUwIEMgNDAwIDQyNiA0NTAgNDI0IDQ2MiA0NDggQyA0NzQgNDcyIDQyOCA0ODQgNDEyIDQ3MCBDIDQwMCA0NjIgNDAyIDQ1NiA0MDAgNDUwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA0NjIgNDQ4IGwgMTIgLTggTSA0NDggNDMwIHEgOCAtMTQgMjIgLTEyIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSA0OTUgNDQwIEggNTQ1IE0gNDk1IDQ2MCBIIDUzMCIvPgogICAgPCEtLSBwaXRjaGVyIG9uIHRhYmxlIC0tPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDUwMCAzODAgTCA0OTIgMzA4IEggNTcwIEwgNTYyIDM4MCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDU3MCAzMjIgcSAyOCAwIDI4IDIyIHEgMCAxOCAtMjQgMjAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQ5NiAzMzYgSCA1NjYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA0OTIgMzA4IEwgNDgwIDMwMCIvPgogICAgPCEtLSBjdXBzIC0tPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI0LjUiIGQ9Ik0gNjEwIDM4MCBMIDYwNCAzNDAgSCA2MzggTCA2MzIgMzgwIi8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQuNSIgZD0iTSA2NTAgMzgwIEwgNjQ0IDM0MCBIIDY3OCBMIDY3MiAzODAiLz4KICAgIDwhLS0gY29pbiBqYXIgLS0+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQuNSIgZD0iTSAyNTAgMzgwIFYgMzMwIEggMzAwIFYgMzgwIi8+CiAgICA8Y2lyY2xlIGN4PSIyNzUiIGN5PSIzNjYiIHI9IjYiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjI2MiIgY3k9IjM3MiIgcj0iNSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8IS0tIGtpZCBiZWhpbmQgdGhlIHRhYmxlOiBoZWFkLCBiaWcgZ3JpbiAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iOCIgZD0iTSA0MjAgMTkwIEMgNDYyIDE5MCA0NzYgMjI4IDQ1OCAyNTggQyA0NDAgMjg4IDM5OCAyODggMzg0IDI1OCBDIDM3MCAyMjYgMzg2IDE5MCA0MjAgMTkwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMzk2IDE5MiBxIDE0IC0yNiAzOCAtOCIvPgogICAgPGNpcmNsZSBjeD0iNDA2IiBjeT0iMjMwIiByPSI0LjUiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPGNpcmNsZSBjeD0iNDQyIiBjeT0iMjMwIiByPSI0LjUiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI0LjUiIGQ9Ik0gNDAwIDI1MiBRIDQyNCAyNzggNDQ4IDI1MiIvPgogICAgPCEtLSBib2R5IC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDM5NCAyNzggQyAzODAgMzEwIDM3OCAzNDUgMzg0IDM4MCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gNDUwIDI3OCBDIDQ2MiAzMTAgNDYyIDM0NSA0NTYgMzgwIi8+CiAgICA8IS0tIHdhdmluZyBhcm0gcmFpc2VkIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDM5NCAyOTYgTCAzNTAgMjc2IEwgMzMyIDIzNiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMzMyIDIzNiBsIC0xMCAtOCBNIDMzMiAyMzYgbCAyIC0xNCBNIDMzMiAyMzYgbCAxMCAtMTAiLz4KICAgIDwhLS0gb3RoZXIgaGFuZCBob2xkaW5nIG91dCBhIGN1cCAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSA0NTIgMjk2IEwgNDc0IDMzMCBMIDQ3MCAzNTQiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNC41IiBkPSJNIDQ1OCAzNzIgTCA0NTQgMzQyIEggNDg2IEwgNDgyIDM3MiBaIi8+CiAgPC9nPgo8L3N2Zz4K" width="800" height="510" alt="Line drawing of a child waving from behind a lemonade stand">
+      <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjcwIDIwMCA2OTAgMzM1IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM4OCI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gOTAgNTIwIEwgNzQwIDUyMCIvPgogICAgPCEtLSB0YWJsZSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMTAgNDAwIEggNzQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0gMzMwIDQwMCBWIDUyMCBNIDcyMCA0MDAgViA1MjAiLz4KICAgIDwhLS0gdGhlIGNyZWF0aW9uOiBhIGx1bXB5IGNyZWF0dXJlIHdpdGggdHdvIGVhcnMsIGJ1aWx0IGZyb20gc3RyaXBzIC0tPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDQ0MCA0MDAgQyA0MjAgMzYwIDQzMCAzMTIgNDcwIDI5NiBDIDUwMCAyODAgNTQwIDI4NiA1NjIgMzA4IEMgNTkwIDMzMCA1OTIgMzcyIDU3MiA0MDAiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNSIgZD0iTSA0NzAgMjk4IEwgNDc0IDI2NiBMIDQ5NCAyOTAgTSA1MzggMjkwIEwgNTU2IDI2MiBMIDU2NCAzMDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQ0MCAzNjIgUSA0ODAgMzMyIDUyMiAzNTQgTSA0NTIgMzMwIFEgNTAwIDMxNCA1NTAgMzIyIE0gNDY4IDM5OCBRIDUyMCAzNjAgNTc0IDM4NCIvPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gNDk4IDMwMiBMIDUzMiAyOTggTCA1MzggMzIwIEwgNTA2IDMyNiBaIE0gNTQ0IDM0NiBMIDU3NCAzNDAgTCA1ODAgMzYyIEwgNTUwIDM2OCBaIi8+CiAgICA8IS0tIHBhc3RlIGJvd2wgLS0+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjUuNSIgZD0iTSAzMzQgNDAwIEMgMzM0IDM2NiAzOTggMzY2IDM5OCA0MDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDM0NCAzODQgUSAzNjYgMzkwIDM4OCAzODQiLz4KICAgIDwhLS0gc3RhY2sgb2YgdG9ybiBzdHJpcHMgLS0+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNjIyIDQwMCBWIDM4MiBMIDY5MCAzNzggViA0MDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDYyMiAzOTEgSCA2OTAgTSA2MzAgMzc4IGwgNiAtMTIgbCAxNCA0IGwgOCAtOCBsIDE0IDgiLz4KICAgIDwhLS0gY2hpbGQ6IHN0YW5kaW5nIGF0IHRoZSB0YWJsZSwgYSBsaXR0bGUgaHVuY2hlZCB3aXRoIGZvY3VzIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDI1MiAyNTIgQyAyODIgMjUyIDI5MiAyODAgMjgyIDMwNCBDIDI3MiAzMjggMjM4IDMyOCAyMjYgMzA0IEMgMjE2IDI4MCAyMjYgMjUyIDI1MiAyNTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODggMjg0IEwgMzAwIDI5NCBMIDI4OCAzMDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAyNDIgMjcyIEwgMjcyIDI3OCIvPgogICAgPGNpcmNsZSBjeD0iMjc2IiBjeT0iMjg2IiByPSI0LjIiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMjYyIDMwOSBRIDI3MiAzMTYgMjgyIDMwOCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBkPSJNIDI0MCAyNTQgcSAyIC0xOCAxOCAtMjIgTSAyNTQgMjUyIHEgOCAtMTQgMjIgLTEyIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMjMyIDMzMCBDIDIxOCAzNjIgMjE0IDQwMCAyMjAgNDQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyNzYgMzM0IEMgMjgyIDM3MCAyNzQgNDEwIDI2OCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDIzMiAzMzAgQyAyNDggMzQyIDI2NCAzNDAgMjc2IDMzNCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDIyNCA0NDAgTCAyMjggNTIwIEwgMjU2IDUyMCBNIDI2NiA0NDAgTCAyNzYgNTIwIEwgMzA0IDUyMCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMjIwIDQ0MCBRIDI0NCA0NTIgMjY4IDQ0MCIvPgogICAgPCEtLSBhcm0gMTogcHJlc3NpbmcgYSBwYXN0ZS1zb2FrZWQgc3RyaXAgb250byB0aGUgY3JlYXR1cmUgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMjYyIDM0NiBMIDMzMCAzNTQgTCA0MTAgMzQwIi8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNDEwIDM0MCBMIDQ0NiAzMjIgTCA0NTYgMzQ0IEwgNDIwIDM1NiBaIi8+CiAgICA8IS0tIGFybSAyOiBoYW5kIGluIHRoZSBwYXN0ZSBib3dsIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDI1OCAzNTQgTCAzMTYgMzk4IEwgMzU4IDM4MCIvPgogICAgPCEtLSBkcmlwcyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQzNiAzNTggViAzNzIgTSA0NTAgMzUwIFYgMzY0Ii8+CiAgICA8IS0tIGpveSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDUxMCAyNTIgTCA1MDYgMjM0IE0gNTU0IDIzOCBMIDU2OCAyMjQgTSA0NzAgMjQ2IEwgNDU2IDIzMiIvPgogIDwvZz4KPC9zdmc+Cg==" width="800" height="388" alt="Line drawing of a child making a paper mache creature at a table">
 
       <div class="band">
         <p class="bio">Join my free New Idea Newsletter and receive one interesting idea every Monday in your inbox</p>
@@ -258,7 +258,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         </div>
       </div>
       <div class="footer-name"><span class="initial">L</span>uke W. Jennings</div>
-      <div class="site-footer"><span>© 2026 Luke W. Jennings</span><span aria-hidden="true">·</span><a href="#/privacy">Privacy &amp; Terms of Use</a><span aria-hidden="true">·</span><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Forms by Buttondown</a><span aria-hidden="true">·</span><button type="button" class="linklike" data-cookie-settings>Cookie settings</button></div>
+      <div class="site-footer"><span>© 2026 Luke W. Jennings</span><span aria-hidden="true">·</span><a class="x-link" href="https://x.com/Lukewjennings_" target="_blank" rel="noopener" aria-label="Luke on X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><span aria-hidden="true">·</span><a href="#/privacy">Privacy &amp; Terms of Use</a><span aria-hidden="true">·</span><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Forms by Buttondown</a><span aria-hidden="true">·</span><button type="button" class="linklike" data-cookie-settings>Cookie settings</button></div>
     </section>
 
     <section id="privacy" class="view">
@@ -343,27 +343,6 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       <p>When I was young, I wanted to be Tiger Woods. That didn’t work out... so I completed a Bachelor’s and Honours degree in Neuroscience because brains are gross but interesting. I then worked in medical research, investigating new treatments for genetic eye disease. After that, I completed my Doctorate of Medicine.</p>
     </section>
 
-    <section id="principles" class="view">
-      <h2 class="sr-only">Principles</h2>
-      <p class="hint">(Click on each to reveal)</p>
-      <details class="principle">
-        <summary>Health, wealth, community, &amp; something fun.</summary>
-        <p>Just the basics, really. I’ve found that if you get these four things right, then chances are you’ll be chuffed with how life is going. From my experience, when one of these areas (or something else) takes up more than its share of dinner, it can only go poorly. Keeping these four things in balance usually does the trick. Anything on top is a bonus.</p>
-      </details>
-      <details class="principle">
-        <summary>Stress is overrated.</summary>
-        <p>Probably a privileged thing to say, because not everyone has the good fortune to overrate stress. Some people, unfortunately, are forced to tolerate stress. However, if you have the option to, why would you not try to eliminate stress from your life? Objective research and subjective experience both point towards stress as increasing your risk of chronic disease and lowering your quality of life (see above principle). If something in your life is causing you sustained period of stress, you might need to ask some questions about if something big needs to change.</p>
-      </details>
-      <details class="principle">
-        <summary>Gratitude is a powerful thing. Practice it every day.</summary>
-        <p>You know that feeling when you’re on holiday and you sit back in your lounge chair and say, ‘Geez how good is this?’. That’s gratitude and it really is the best thing for you. Despite not always being able to be on holiday, you can be grateful about the little things in life, no matter what your situation is. If your health isn’t the greatest, be thankful for your loved ones. If the algorithm made you redundant, be grateful you still have a bed to sleep in. Gratitude doesn’t deny your experience of hardship, it just enhances your appreciation of the good.</p>
-      </details>
-      <details class="principle">
-        <summary>Add a smidge of controlled pain or discomfort to your day.</summary>
-        <p>Pain gets a bad rap. So bad that in developed countries, we’ve largely tried to remove any pain or discomfort from our lives: think Uber Eats, soft pillows, robotic vacuums and pre-made meals (of which I’m a huge sucker). These thing help us, but they also soften us up, and make us less resilient when something difficult happens. Adding a small amount of discomfort to your day prepares you for when life gets hard. It sounds hardcore, but it works. Things like doing a hard physical workout, having a cold shower in winter or drinking instant coffee for a week. These little microns of discomfort will build resilience and help you when things are actually challenging.</p>
-      </details>
-    </section>
-
     <section id="archive" class="view">
       <h2 class="sr-only">Essays</h2>
             <p class="essays-intro">I write about how we grapple with, and experience various internal and external elements of life that affect all people. Click on an article to explore.</p>
@@ -388,6 +367,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <div class="quad">
           <h3 class="quad-title">Money</h3>
           <a class="intro-link" href="#/post/being-wealthy-means-being-a-business-owner">Being wealthy means being a business owner</a>
+        </div>
+        <div class="quad">
+          <h3 class="quad-title">Creativity</h3>
+          <a class="intro-link" href="#/post/make-it-for-you">Make it for you</a>
         </div>
       </div>
     </section>
@@ -528,6 +511,13 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <p>High-income earners who don’t have ownership in a business mistake their large salary for wealth. These people appear wealthy on paper, however, unless they invest in a business that magnifies their earning potential, they will never be truly wealthy.</p>
           <p>Wealth isn’t about how much your salary is. Wealth is about placing your money into a business that harnesses the power of the collective.</p>
         </div>
+        <div class="body" data-slug="make-it-for-you">
+          <div class="meta">October 2026</div>
+          <img class="essay-art essay-art-brick" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjcwIDIwMCA2OTAgMzM1IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM4OCI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gOTAgNTIwIEwgNzQwIDUyMCIvPgogICAgPCEtLSB0YWJsZSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMTAgNDAwIEggNzQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0gMzMwIDQwMCBWIDUyMCBNIDcyMCA0MDAgViA1MjAiLz4KICAgIDwhLS0gdGhlIGNyZWF0aW9uOiBhIGx1bXB5IGNyZWF0dXJlIHdpdGggdHdvIGVhcnMsIGJ1aWx0IGZyb20gc3RyaXBzIC0tPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDQ0MCA0MDAgQyA0MjAgMzYwIDQzMCAzMTIgNDcwIDI5NiBDIDUwMCAyODAgNTQwIDI4NiA1NjIgMzA4IEMgNTkwIDMzMCA1OTIgMzcyIDU3MiA0MDAiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNSIgZD0iTSA0NzAgMjk4IEwgNDc0IDI2NiBMIDQ5NCAyOTAgTSA1MzggMjkwIEwgNTU2IDI2MiBMIDU2NCAzMDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQ0MCAzNjIgUSA0ODAgMzMyIDUyMiAzNTQgTSA0NTIgMzMwIFEgNTAwIDMxNCA1NTAgMzIyIE0gNDY4IDM5OCBRIDUyMCAzNjAgNTc0IDM4NCIvPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gNDk4IDMwMiBMIDUzMiAyOTggTCA1MzggMzIwIEwgNTA2IDMyNiBaIE0gNTQ0IDM0NiBMIDU3NCAzNDAgTCA1ODAgMzYyIEwgNTUwIDM2OCBaIi8+CiAgICA8IS0tIHBhc3RlIGJvd2wgLS0+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjUuNSIgZD0iTSAzMzQgNDAwIEMgMzM0IDM2NiAzOTggMzY2IDM5OCA0MDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDM0NCAzODQgUSAzNjYgMzkwIDM4OCAzODQiLz4KICAgIDwhLS0gc3RhY2sgb2YgdG9ybiBzdHJpcHMgLS0+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNjIyIDQwMCBWIDM4MiBMIDY5MCAzNzggViA0MDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDYyMiAzOTEgSCA2OTAgTSA2MzAgMzc4IGwgNiAtMTIgbCAxNCA0IGwgOCAtOCBsIDE0IDgiLz4KICAgIDwhLS0gY2hpbGQ6IHN0YW5kaW5nIGF0IHRoZSB0YWJsZSwgYSBsaXR0bGUgaHVuY2hlZCB3aXRoIGZvY3VzIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDI1MiAyNTIgQyAyODIgMjUyIDI5MiAyODAgMjgyIDMwNCBDIDI3MiAzMjggMjM4IDMyOCAyMjYgMzA0IEMgMjE2IDI4MCAyMjYgMjUyIDI1MiAyNTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODggMjg0IEwgMzAwIDI5NCBMIDI4OCAzMDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAyNDIgMjcyIEwgMjcyIDI3OCIvPgogICAgPGNpcmNsZSBjeD0iMjc2IiBjeT0iMjg2IiByPSI0LjIiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMjYyIDMwOSBRIDI3MiAzMTYgMjgyIDMwOCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBkPSJNIDI0MCAyNTQgcSAyIC0xOCAxOCAtMjIgTSAyNTQgMjUyIHEgOCAtMTQgMjIgLTEyIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMjMyIDMzMCBDIDIxOCAzNjIgMjE0IDQwMCAyMjAgNDQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyNzYgMzM0IEMgMjgyIDM3MCAyNzQgNDEwIDI2OCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDIzMiAzMzAgQyAyNDggMzQyIDI2NCAzNDAgMjc2IDMzNCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDIyNCA0NDAgTCAyMjggNTIwIEwgMjU2IDUyMCBNIDI2NiA0NDAgTCAyNzYgNTIwIEwgMzA0IDUyMCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMjIwIDQ0MCBRIDI0NCA0NTIgMjY4IDQ0MCIvPgogICAgPCEtLSBhcm0gMTogcHJlc3NpbmcgYSBwYXN0ZS1zb2FrZWQgc3RyaXAgb250byB0aGUgY3JlYXR1cmUgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMjYyIDM0NiBMIDMzMCAzNTQgTCA0MTAgMzQwIi8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNDEwIDM0MCBMIDQ0NiAzMjIgTCA0NTYgMzQ0IEwgNDIwIDM1NiBaIi8+CiAgICA8IS0tIGFybSAyOiBoYW5kIGluIHRoZSBwYXN0ZSBib3dsIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDI1OCAzNTQgTCAzMTYgMzk4IEwgMzU4IDM4MCIvPgogICAgPCEtLSBkcmlwcyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDQzNiAzNTggViAzNzIgTSA0NTAgMzUwIFYgMzY0Ii8+CiAgICA8IS0tIGpveSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDUxMCAyNTIgTCA1MDYgMjM0IE0gNTU0IDIzOCBMIDU2OCAyMjQgTSA0NzAgMjQ2IEwgNDU2IDIzMiIvPgogIDwvZz4KPC9zdmc+Cg==" width="800" height="388" alt="Line drawing of a child making a paper mache creature at a table">
+          <p>You’re the first consumer of your own work. Ground zero. Numero uno.</p>
+          <p>If you don’t think it’s good, why would anyone else? Make the thing that you want. Make the thing that’s missing, and you can’t find already out there. Build what you think will be impressive or helpful.</p>
+          <p>Chances are if you’re wanting it, somebody else is too. Make it first for you, and other people might also want it.</p>
+        </div>
         <div class="body" data-default>
           <p>Replace this text with the post.</p>
         </div>
@@ -560,6 +550,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 <script>
 (function () {
   var titles = {
+    'make-it-for-you': 'Make it for you',
     'being-wealthy-means-being-a-business-owner': 'Being wealthy means being a business owner',
     'what-good-looks-like': 'What good looks like',
     'is-it-really-a-problem': 'Is it really a problem?',
@@ -570,7 +561,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     'goals-are-the-death-of-interesting': 'Does having goals make you boring?',
     'why-your-health-is-all-you-have': 'Is health really that important?'
   };
-  var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), principles: document.getElementById('principles'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
+  var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
   var current = null, lastTrack = { h: null, t: 0 }, lastH = '#/', lastKey = 'home';
   // Report a page view, but only if the visitor has accepted analytics.
   function track(h, key) {
@@ -587,7 +578,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
   }
   function route() {
     var h = current !== null ? current : (location.hash || '#/');
-    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/principles') === 0 ? 'principles' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/privacy') === 0 ? 'privacy' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
+    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/privacy') === 0 ? 'privacy' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
     if (key === 'post') {
       var t = titles[h.slice(7)] || 'Post';
       document.getElementById('post-title').textContent = t;
@@ -599,8 +590,6 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         d.classList.toggle('on', found ? d.getAttribute('data-slug') === slug : d.hasAttribute('data-default'));
       }
       document.title = t + ' | Luke W. Jennings';
-    } else if (key === 'principles') {
-      document.title = 'Principles | Luke W. Jennings';
     } else if (key === 'newsletter') {
       document.title = 'Newsletter | Luke W. Jennings';
     } else if (key === 'thanks') {
