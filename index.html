@@ -181,17 +181,23 @@ main { flex: 1; display: flex; flex-direction: column; }
 .footer-name .initial { color: #bf4e0b; }
 .footer-name + .site-footer { margin-top: 12px; }
 @media (max-width: 420px) { .footer-name { font-size: 26px; } }
-.quads { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.quads { display: grid; grid-template-columns: 1fr 1fr; }
 .quad { padding: 40px 40px 28px 0; min-height: 200px; }
-.quad:nth-child(even) { padding-left: 40px; padding-right: 0; border-left: 1px solid var(--rule); }
-.quad:nth-child(n+3) { border-top: 1px solid var(--rule); }
-.quad-title { margin: 0 0 24px; font-size: 24px; line-height: 1.3; font-weight: 600; }
-.quad .intro-link { font-size: 19px; margin-bottom: 18px; }
+.quad:nth-child(even) { padding-left: 40px; padding-right: 0; }
+.quad-title { margin: 0 0 20px; font-size: 24px; line-height: 1.3; font-weight: 600; }
+.quad .intro-link, .topic .intro-link { display: block; width: auto; max-width: none; margin: 0; padding: 15px 0; font-size: 20px; line-height: 1.4; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.quad .intro-link:hover, .topic .intro-link:hover { color: #bf4e0b; }
+.quad-title + .intro-link, .topic-title + .intro-link { border-top: 1px solid var(--rule); }
+.quad .intro-link.more { display: none; }
+.quad-more { display: inline-flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+.quad-more:hover { color: #bf4e0b; }
+.topic { max-width: 760px; margin: 0 auto; }
+.topic-title { margin: 0 0 24px; font-size: 38px; line-height: 1.2; }
+.topic-back { display: inline-block; margin-bottom: 28px; font-size: 15px; color: var(--muted); }
 .quad-empty { margin: 0; color: var(--muted); font-style: italic; font-size: 18px; }
 @media (max-width: 759px) {
   .quads { grid-template-columns: 1fr; }
   .quad, .quad:nth-child(even) { padding: 32px 0 16px; border-left: 0; min-height: 0; }
-  .quad:nth-child(n+2) { border-top: 1px solid var(--rule); }
 }
 @media (max-width: 759px) { .intro { grid-template-columns: 1fr; } .intro-left { padding: 48px 0; } .intro-right { padding: 0 0 48px; border-left: 0; } .intro .intro-title { font-size: 32px; } }
 .hint { margin: 0 0 20px 20px; font-size: 15px; font-style: italic; color: var(--muted); }
@@ -219,7 +225,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
   <header>
     <a class="name" href="#/"><span class="initial">L</span>uke W. Jennings</a>
     <nav aria-label="Main">
-      <a href="#/archive" data-nav="archive">Essays</a>
+      <a href="#/archive" data-nav="archive">Articles</a>
       <a href="#/newsletter" data-nav="newsletter">Newsletter</a>
       </nav>
     <a class="about-link" href="#/about" data-nav="about">About</a>
@@ -227,10 +233,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 
   <main>
     <section id="home" class="view on">
-      <p class="lead">Good ideas, in written form<br><em class="lead-sub">New articles every week.</em></p>
+      <p class="lead">Good ideas, in written form.<br><em class="lead-sub">New articles every week.</em></p>
       <p class="lead">Try my latest one:</p>
       <ul>
-        <li><a href="#/post/less-is-more">Less is more</a></li>
+        <li><a href="#/post/less-is-more">Less Is More</a></li>
       </ul>
       <p class="home-date">October 2026</p>
       <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDIwMCA3MTAgMzM1IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM3OCI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNzAgNTIwIEwgNzQwIDUyMCIvPgogICAgPCEtLSBiYWxhbmNlIHNjYWxlOiBwb3N0LCB0aWx0ZWQgYmVhbSAobGVmdCBzaWRlIGhlYXZ5IGFuZCBkb3duKSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNyIgZD0iTSA1MjAgNTIwIFYgMjUwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gNDgwIDUyMCBIIDU2MCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDM3MiAyODIgTCA2NjggMjE4Ii8+CiAgICA8Y2lyY2xlIGN4PSI1MjAiIGN5PSIyNTAiIHI9IjkiIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPCEtLSBsZWZ0IHBhbiAobG93KTogT05FIGJpZywgZ29vZCB0aGluZyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDM3MiAyODIgTCAzNDAgMzkyIE0gMzcyIDI4MiBMIDQyNCAzOTIiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMjYgMzkyIEggNDM4IEMgNDMyIDQyMCAzNDAgNDIwIDMyNiAzOTIgWiIvPgogICAgPHBhdGggZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDM4MiAzOTIgQyAzNDAgMzgwIDMzOCAzMjYgMzgyIDMxNiBDIDQyNiAzMjYgNDI0IDM4MCAzODIgMzkyIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAzODIgMzE2IHEgNCAtMTQgMjAgLTE4Ii8+CiAgICA8IS0tIHJpZ2h0IHBhbiAoaGlnaCk6IGxvdHMgb2YgbGl0dGxlIHRoaW5ncyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDY2OCAyMTggTCA2MzYgMzA0IE0gNjY4IDIxOCBMIDcxNiAzMDQiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNiIgZD0iTSA2MjQgMzA0IEggNzI4IEMgNzIyIDMzMCA2MzYgMzMwIDYyNCAzMDQgWiIvPgogICAgPGNpcmNsZSBjeD0iNjQwIiBjeT0iMjk2IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2NjIiIGN5PSIyOTYiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPjxjaXJjbGUgY3g9IjY4NCIgY3k9IjI5NiIgcj0iOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNzA2IiBjeT0iMjk2IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDxjaXJjbGUgY3g9IjY1MSIgY3k9IjI3OSIgcj0iOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNjczIiBjeT0iMjc5IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2OTUiIGN5PSIyNzkiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPGNpcmNsZSBjeD0iNjYyIiBjeT0iMjYyIiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2ODQiIGN5PSIyNjIiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPCEtLSB0aGUgZmlndXJlLCBzdGFuZGluZyBhdCBsZWZ0LCBvbmUgYXJtIG91dCB0b3dhcmQgdGhlIHNjYWxlIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDE0NiAyMzIgQyAxNzggMjMyIDE4OCAyNjQgMTc2IDI5MCBDIDE2NCAzMTYgMTI4IDMxNiAxMTYgMjkwIEMgMTA0IDI2MiAxMTQgMjMyIDE0NiAyMzIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAxNzggMjc0IEwgMTk0IDI4NiBMIDE3NiAyOTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxMzQgMjUyIEwgMTY4IDI1MiIvPgogICAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMjY4IiByPSI0LjUiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMTUwIDMwMCBRIDE2NCAzMDggMTc0IDI5OCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDEyNiAzMDYgQyAxMDAgMzQyIDkwIDM5MCA5OCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDE2OCAzMTggQyAxNzIgMzU2IDE2MCA0MDAgMTQ4IDQzNiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMTI2IDMwNiBDIDE0MiAzMjAgMTU2IDMyMiAxNjggMzE4Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTIwIDQzNiBMIDEzMiA1MjAgTCAxNjIgNTIwIE0gOTggNDM2IEwgODIgNTIwIEwgNTIgNTIwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSA5OCA0MzYgUSAxMTIgNDQ4IDEyNCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxNTYgMzM2IEwgMjE0IDM1MiBMIDI1OCAzMzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxNDYgMzQ0IEwgMTcwIDQwMCBMIDE3OCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDI0NCAzMDAgTCAyMzIgMjg0IE0gMjY2IDMwNCBMIDI3MCAyODYiLz4KICA8L2c+Cjwvc3ZnPgo=" width="800" height="378" alt="Line drawing of a person beside a balance scale where one large item outweighs a pile of small ones">
@@ -358,32 +364,46 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       <h2 class="sr-only">Essays</h2>
             <p class="essays-intro">I write about interesting ideas.<br><em>Click on an article to see if you find them interesting too.</em></p>
       <div class="quads">
-        <div class="quad">
-          <h3 class="quad-title">Health and Illness</h3>
-          <a class="intro-link" href="#/post/how-to-be-frustrated">A better way of being frustrated</a>
-          <a class="intro-link" href="#/post/the-good-part-of-getting-sick">The best things about being sick</a>
-          <a class="intro-link" href="#/post/why-your-health-is-all-you-have">Why your health matters</a>
+        <div class="quad" data-topic="mindset" data-title="Mindset">
+          <h3 class="quad-title">Mindset</h3>
+          <a class="intro-link" href="#/post/less-is-more">Less Is More</a>
+          <a class="intro-link" href="#/post/what-good-looks-like">What Good Looks Like</a>
+          <a class="intro-link" href="#/post/is-it-really-a-problem">Some Obstacles Are Opportunities</a>
+          <a class="intro-link more" href="#/post/goals-are-the-death-of-interesting">Goals Make You Boring</a>
+          <a class="quad-more" href="#/topic/mindset">Read more articles on Mindset <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad">
-          <h3 class="quad-title">Artificial Intelligence &amp; Technology</h3>
+        <div class="quad" data-topic="health" data-title="Health">
+          <h3 class="quad-title">Health</h3>
+          <a class="intro-link" href="#/post/how-to-be-frustrated">A Better Way of Being Frustrated</a>
+          <a class="intro-link" href="#/post/the-good-part-of-getting-sick">The Best Things About Being Sick</a>
+          <a class="intro-link" href="#/post/why-your-health-is-all-you-have">Why Your Health Matters</a>
+          <a class="quad-more" href="#/topic/health">Read more articles on Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
+        </div>
+        <div class="quad" data-topic="creativity" data-title="Creativity">
+          <h3 class="quad-title">Creativity</h3>
+          <a class="intro-link" href="#/post/make-it-for-you">Make It for You</a>
+          <a class="quad-more" href="#/topic/creativity">Read more articles on Creativity <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
+        </div>
+        <div class="quad" data-topic="money" data-title="Money">
+          <h3 class="quad-title">Money</h3>
+          <a class="intro-link" href="#/post/harness-the-power-of-compounding">Harness the Power of Compounding</a>
+          <a class="intro-link" href="#/post/being-wealthy-means-being-a-business-owner">Own a Business</a>
+          <a class="quad-more" href="#/topic/money">Read more articles on Money <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
+        </div>
+        <div class="quad" data-topic="technology" data-title="Technology">
+          <h3 class="quad-title">Technology</h3>
           <a class="intro-link" href="#/post/the-untouchables">The Untouchables</a>
           <a class="intro-link" href="#/post/work-algorithms-and-male-escorts">Work, Algorithms &amp; Male Escorts</a>
+          <a class="quad-more" href="#/topic/technology">Read more articles on Technology <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad">
-          <h3 class="quad-title">Mindset</h3>
-          <a class="intro-link" href="#/post/less-is-more">Less is more</a>
-          <a class="intro-link" href="#/post/what-good-looks-like">What good looks like</a>
-          <a class="intro-link" href="#/post/is-it-really-a-problem">Some obstacles are opportunities</a>
-          <a class="intro-link" href="#/post/goals-are-the-death-of-interesting">Goals make you boring</a>
-        </div>
-        <div class="quad">
-          <h3 class="quad-title">Money</h3>
-          <a class="intro-link" href="#/post/being-wealthy-means-being-a-business-owner">Own a business</a>
-        </div>
-        <div class="quad">
-          <h3 class="quad-title">Creativity</h3>
-          <a class="intro-link" href="#/post/make-it-for-you">Make it for you</a>
-        </div>
+      </div>
+    </section>
+
+    <section id="topic" class="view">
+      <div class="topic">
+        <a class="topic-back" href="#/archive">&larr; All articles</a>
+        <h2 class="topic-title" id="topic-title"></h2>
+        <div id="topic-list"></div>
       </div>
     </section>
 
@@ -543,6 +563,17 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <p>Before I rest my case, my final argument for why less is more is that human beings tend to be less appreciative of abundance than of scarcity. Your fifth Lamborghini is less satisfying than your first one (or so I imagine - not that I am a car person). There’s something about having ‘extra’ which the human brain becomes desensitised to and therefore begins to value less. We are far more appreciative of having a smaller number of things that we have hand-selected and value more than of having excessive amounts of an item to which we have no real attachment. Less means more appreciation.</p>
           <p>Next time you think you need more, ask yourself if you can do it with less. You might surprise yourself at how much you can produce with fewer, and how much more you value the process (and outcome) as you work toward your objective.</p>
         </div>
+        <div class="body" data-slug="harness-the-power-of-compounding">
+          <div class="subtitle">What makes investing over the long term so challenging?</div>
+          <div class="meta">October 2026</div>
+          <img class="essay-art essay-art-brick" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDE0MCA3NDAgMzk1IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyNyI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNjAgNTIwIEwgNzYwIDUyMCIvPgogICAgPCEtLSBzdGFnZSAxOiBhIHRpbnkgc3Byb3V0IHdpdGggb25lIGNvaW4gLS0+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNCwwKSI+PHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDI5MCA1MjAgViA0OTAgTSAyOTAgNTA0IHEgLTE2IC0yIC0yMCAtMTggTSAyOTAgNDk4IHEgMTQgLTIgMTggLTE2Ii8+CiAgICA8Y2lyY2xlIGN4PSIyOTAiIGN5PSI0NzAiIHI9IjkiIGZpbGw9IiNiZjRlMGIiIHN0cm9rZS13aWR0aD0iNCIvPjwvZz4KICAgIDwhLS0gc3RhZ2UgMjogYSBzYXBsaW5nIHdpdGggYSBmZXcgY29pbnMgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gNDMwIDUyMCBWIDQzMCBNIDQzMCA0ODggcSAtMjYgLTQgLTMyIC0yOCBNIDQzMCA0NjYgcSAyOCAtNCAzNCAtMzAgTSA0MzAgNDQwIHEgLTEyIC0xMiAtMTAgLTI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIzOTYiIGN5PSI0NDYiIHI9IjEyIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI0NjgiIGN5PSI0MjIiIHI9IjEyIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI0MjAiIGN5PSI0MDQiIHI9IjEyIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDwhLS0gc3RhZ2UgMzogYSBiaWcgdHJlZSBoZWF2eSB3aXRoIGNvaW5zIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIxMCIgZD0iTSA2NDAgNTIwIEMgNjM2IDQ3MCA2NDYgNDIwIDY0MCAzNDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iOCIgZD0iTSA2NDAgNDIwIEMgNjAwIDQxMCA1NzYgMzkyIDU2MCAzNjAgTSA2NDAgMzkyIEMgNjgwIDM4NCA3MDQgMzY0IDcxNiAzMzIgTSA2NDAgMzUwIEMgNjI0IDMyMCA2MjAgMjk2IDYyOCAyNzAiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNyIgZD0iTSA1MjAgMzQwIEMgNDkwIDI5MCA1MjAgMjIwIDU4MCAyMjQgQyA1OTAgMTcwIDY4MCAxNjAgNzAwIDIyMCBDIDc2MCAyMTQgNzgwIDI5MCA3NDAgMzM2IEMgNzIwIDM3MiA1NjAgMzc2IDUyMCAzNDAgWiIvPgogICAgPGNpcmNsZSBjeD0iNTYwIiBjeT0iMjg4IiByPSIxMyIgZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNjEwIiBjeT0iMjUwIiByPSIxMyIgZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNjYwIiBjeT0iMzAwIiByPSIxMyIgZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICA8Y2lyY2xlIGN4PSI3MDAiIGN5PSIyNTIiIHI9IjEzIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI3MjgiIGN5PSIzMTIiIHI9IjEzIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI1OTgiIGN5PSIzMzAiIHI9IjEzIiBmaWxsPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDxjaXJjbGUgY3g9IjY1MCIgY3k9IjIwNiIgcj0iMTMiIGZpbGw9IiNiZjRlMGIiIHN0cm9rZS13aWR0aD0iNCIvPjxjaXJjbGUgY3g9IjUzMCIgY3k9IjMyMiIgcj0iMTMiIGZpbGw9IiNiZjRlMGIiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPCEtLSB0aGUgZ2FyZGVuZXI6IHBhdGllbnQsIHdhdGVyaW5nIHRoZSBzcHJvdXQgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMTQ2IDIzMiBDIDE3OCAyMzIgMTg4IDI2NCAxNzYgMjkwIEMgMTY0IDMxNiAxMjggMzE2IDExNiAyOTAgQyAxMDQgMjYyIDExNCAyMzIgMTQ2IDIzMiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE3OCAyNzQgTCAxOTQgMjg2IEwgMTc2IDI5MiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDEzNCAyNTIgTCAxNjggMjUyIi8+CiAgICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIyNjgiIHI9IjQuNSIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxNTAgMzAwIFEgMTY0IDMwOCAxNzQgMjk4Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMTI2IDMwNiBDIDEwMCAzNDIgOTAgMzkwIDk4IDQzNiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMTY4IDMxOCBDIDE3MiAzNTYgMTYwIDQwMCAxNDggNDM2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxMjYgMzA2IEMgMTQyIDMyMCAxNTYgMzIyIDE2OCAzMTgiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxMjAgNDM2IEwgMTMyIDUyMCBMIDE2MiA1MjAgTSA5OCA0MzYgTCA4MiA1MjAgTCA1MiA1MjAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDk4IDQzNiBRIDExMiA0NDggMTI0IDQzNiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDE1NiAzMzYgTCAyMDAgMzU2IEwgMjI2IDM0NiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDE0NiAzNDQgTCAxNzAgNDAwIEwgMTc4IDQ0MCIvPgogICAgPCEtLSB3YXRlcmluZyBjYW4sIHRpcHBlZCwgcG91cmluZyBvbiB0aGUgc3Byb3V0IC0tPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDIyNiAzMTYgSCAyODIgTCAyOTAgMzcyIEggMjIwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODQgMzMyIEwgMzIyIDM1MCBNIDMyMiAzNTAgTCAzMTggMzU4Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gMjI2IDMyMiBDIDIwNiAzMjIgMjA0IDM2MCAyMjQgMzYwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMiIGQ9Ik0gMzIyIDM2NiBWIDM5MiBNIDMzMiAzNjYgViAzOTggTSAzMTIgMzY4IFYgMzg4Ii8+CiAgPC9nPgo8L3N2Zz4K" width="800" height="427" alt="Line drawing of a person watering a tiny sprout, beside a sapling and a large tree full of coins">
+          <p>Small investments, consistently executed over the long term, produce outsized results. It’s simple stuff that most people are aware of. I vaguely remember learning the formula for compound interest in year ten of high school, but probably didn’t grasp its importance until years later. Even Einstein thought it was pretty neat when he remarked, ‘Compound interest is the eighth wonder of the world’.</p>
+          <p>The general principle is that money invested over time tends to earn more money. When the earnings of that investment are re-invested, the investment in turn generates even greater returns. Investing over the long term effectively makes one a small business owner, which becomes a driver of wealth creation. Incredibly sexy stuff, I know.</p>
+          <p>The maths of how compound interest works is beyond the scope of this article. What I wanted to explore here are the reasons why more people don’t invest over the long term, despite most people being privy to its benefits.</p>
+          <p>The reasons people don’t invest over the long term are many. I believe the major reason is that it’s boring. It seems like most things that are not an 8-second TikTok video now just don’t get traction. What feeds the human dopamine feedback system is reward, and unfortunately compound interest doesn’t feed that neural pathway for some time. Investing for long-term gains requires a quiet discipline and a consistent mindset to continue investing even when you’ve long lost the will to do so, and even when there’s no immediate carrot in front of your eyes incentivising you to do so.</p>
+          <p>The other main reason why people don’t stick with compound investing is that they have other financial needs to attend to. They may forget why they started their Vanguard ETF account in the first place, and pull that money out when they need to purchase an engagement ring. Or, they may simply have other expenses that supersede the need to continue with their investment. Either way, it’s understandable - particularly in the current economic climate.</p>
+          <p>Regardless of the reasons why people are unable to benefit from the effects of compounding over the long term, it’s a proven way to create sustainable wealth. If that’s something that interests you, it might be worth exploring the underlying reasons that are currently preventing you from doing so.</p>
+        </div>
         <div class="body" data-default>
           <p>Replace this text with the post.</p>
         </div>
@@ -566,7 +597,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 </div>
 
 <div id="cookie-notice" role="dialog" aria-label="Cookie notice" hidden>
-  <p>I use Google Analytics to see which essays people read. It sets cookies, so it only runs if you say yes. <a href="#/privacy">Privacy &amp; Terms of Use</a></p>
+  <p>I use Google Analytics to see which articles people read. It sets cookies, so it only runs if you say yes. <a href="#/privacy">Privacy &amp; Terms of Use</a></p>
   <div class="cookie-actions">
     <button type="button" class="cookie-btn cookie-accept" data-consent="granted">Accept</button>
     <button type="button" class="cookie-btn cookie-decline" data-consent="denied">Decline</button>
@@ -575,19 +606,20 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 <script>
 (function () {
   var titles = {
-    'less-is-more': 'Less is more',
-    'make-it-for-you': 'Make it for you',
-    'being-wealthy-means-being-a-business-owner': 'Own a business',
-    'what-good-looks-like': 'What good looks like',
-    'is-it-really-a-problem': 'Some obstacles are opportunities',
+    'harness-the-power-of-compounding': 'Harness the Power of Compounding',
+    'less-is-more': 'Less Is More',
+    'make-it-for-you': 'Make It for You',
+    'being-wealthy-means-being-a-business-owner': 'Own a Business',
+    'what-good-looks-like': 'What Good Looks Like',
+    'is-it-really-a-problem': 'Some Obstacles Are Opportunities',
     'the-untouchables': 'The Untouchables',
-    'how-to-be-frustrated': 'A better way of being frustrated',
+    'how-to-be-frustrated': 'A Better Way of Being Frustrated',
     'work-algorithms-and-male-escorts': 'Work, Algorithms & Male Escorts',
-    'the-good-part-of-getting-sick': 'The best things about being sick',
-    'goals-are-the-death-of-interesting': 'Goals make you boring',
-    'why-your-health-is-all-you-have': 'Why your health matters'
+    'the-good-part-of-getting-sick': 'The Best Things About Being Sick',
+    'goals-are-the-death-of-interesting': 'Goals Make You Boring',
+    'why-your-health-is-all-you-have': 'Why Your Health Matters'
   };
-  var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), home: document.getElementById('home'), archive: document.getElementById('archive'), post: document.getElementById('post') };
+  var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), home: document.getElementById('home'), archive: document.getElementById('archive'), topic: document.getElementById('topic'), post: document.getElementById('post') };
   var current = null, lastTrack = { h: null, t: 0 }, lastH = '#/', lastKey = 'home';
   // Report a page view, but only if the visitor has accepted analytics.
   function track(h, key) {
@@ -604,7 +636,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
   }
   function route() {
     var h = current !== null ? current : (location.hash || '#/');
-    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/privacy') === 0 ? 'privacy' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
+    var key = h.indexOf('#/archive') === 0 ? 'archive' : h.indexOf('#/topic/') === 0 ? 'topic' : h.indexOf('#/about') === 0 ? 'about' : h.indexOf('#/newsletter') === 0 ? 'newsletter' : h.indexOf('#/thanks') === 0 ? 'thanks' : h.indexOf('#/privacy') === 0 ? 'privacy' : h.indexOf('#/post/') === 0 ? 'post' : 'home';
     if (key === 'post') {
       var t = titles[h.slice(7)] || 'Post';
       document.getElementById('post-title').textContent = t;
@@ -615,6 +647,16 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         d.classList.toggle('on', found ? d.getAttribute('data-slug') === slug : d.hasAttribute('data-default'));
       }
       document.title = t + ' | Luke W. Jennings';
+    } else if (key === 'topic') {
+      var tq = document.querySelectorAll('#archive .quad[data-topic]'), tn = null;
+      for (var q = 0; q < tq.length; q++) { if (tq[q].getAttribute('data-topic') === h.slice(8)) tn = tq[q]; }
+      if (!tn) { goTo('#/archive'); return; }
+      var tt = tn.getAttribute('data-title').replace('&amp;', '&');
+      document.getElementById('topic-title').textContent = tt;
+      var tl = document.getElementById('topic-list'), tk = tn.querySelectorAll('a.intro-link');
+      tl.innerHTML = '';
+      for (var u = 0; u < tk.length; u++) { var c = tk[u].cloneNode(true); c.classList.remove('more'); tl.appendChild(c); }
+      document.title = tt + ' | Luke W. Jennings';
     } else if (key === 'newsletter') {
       document.title = 'Newsletter | Luke W. Jennings';
     } else if (key === 'thanks') {
@@ -624,10 +666,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     } else if (key === 'about') {
       document.title = 'About | Luke W. Jennings';
     } else {
-      document.title = key === 'archive' ? 'Essays | Luke W. Jennings' : 'Luke W. Jennings';
+      document.title = key === 'archive' ? 'Articles | Luke W. Jennings' : 'Luke W. Jennings';
     }
     for (var k in views) views[k].classList.toggle('on', k === key);
-    var cur = key === 'post' ? 'archive' : key, links = document.querySelectorAll('header a[data-nav]');
+    var cur = (key === 'post' || key === 'topic') ? 'archive' : key, links = document.querySelectorAll('header a[data-nav]');
     for (var n = 0; n < links.length; n++) {
       var on = links[n].getAttribute('data-nav') === cur;
       links[n].classList.toggle('active', on);
