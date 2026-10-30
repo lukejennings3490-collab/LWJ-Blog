@@ -50,6 +50,12 @@ body {
 header { position: relative; padding: 18px 0; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px 20px; margin-bottom: 64px; }
 header::before, header::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: #bf4e0b; box-shadow: 0 0 0 100vmax #bf4e0b; clip-path: inset(0 -100vmax); }
 header::before { top: 0; }
+@keyframes drawline {
+  from { clip-path: inset(0 calc(100% + (100vw - 100%) / 2) 0 calc(-1 * (100vw - 100%) / 2)); }
+  to { clip-path: inset(0 calc(-1 * (100vw - 100%) / 2) 0 calc(-1 * (100vw - 100%) / 2)); }
+}
+header.draw::after { animation: drawline 1.2s cubic-bezier(.3,.6,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { header.draw::after { animation: none; } }
 header::after { bottom: 0; }
 header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 24px; }
 header nav a, header .about-link { color: var(--fg); font-size: 17px; text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
@@ -64,7 +70,7 @@ header nav a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; 
   header { grid-template-columns: 1fr auto; margin-bottom: 48px; }
   header nav { grid-column: 1 / -1; grid-row: 2; justify-content: center; gap: 4px 22px; }
   header .about-link { grid-column: 2; grid-row: 1; }
-  header }
+}
 header .name { white-space: nowrap; font-size: 32px; line-height: 40px; font-weight: 600; text-decoration: none; color: var(--fg); }
 a { color: var(--link); text-decoration-color: var(--rule); text-underline-offset: 3px; }
 a:hover { text-decoration-color: var(--fg); }
@@ -104,7 +110,7 @@ li .date { color: var(--muted); font-size: 15px; white-space: nowrap; }
 @media (min-width: 1040px) {
   .wrap { max-width: 1200px; padding-left: 32px; padding-right: 32px; }
   header { grid-template-columns: 1fr auto 1fr; }
-  header }
+}
 .body ol { margin: 0 0 1.1em; padding-left: 1.4em; }
 .body li { display: list-item; padding: 4px 0; }
 #thanks .lead + .lead { margin-top: 14px; }
@@ -189,6 +195,9 @@ main { flex: 1; display: flex; flex-direction: column; }
 .quad .intro-link:hover, .topic .intro-link:hover { color: #bf4e0b; }
 .quad-title + .intro-link, .topic-title + .intro-link { border-top: 1px solid var(--rule); }
 .quad .intro-link.more { display: none; }
+.reveal-on .reveal { opacity: 0; transform: translateY(40px) scale(.98); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal-on .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal-on .reveal { opacity: 1; transform: none; transition: none; } }
 .quad-more { display: inline-flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
 .quad-more:hover { color: #bf4e0b; }
 .topic { max-width: 760px; margin: 0 auto; }
@@ -236,10 +245,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       <p class="lead">Good ideas, in written form.<br><em class="lead-sub">New articles every week.</em></p>
       <p class="lead">Try my latest one:</p>
       <ul>
-        <li><a href="#/post/less-is-more">Less Is More</a></li>
+        <li><a href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a></li>
       </ul>
       <p class="home-date">October 2026</p>
-      <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDIwMCA3MTAgMzM1IiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM3OCI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gNzAgNTIwIEwgNzQwIDUyMCIvPgogICAgPCEtLSBiYWxhbmNlIHNjYWxlOiBwb3N0LCB0aWx0ZWQgYmVhbSAobGVmdCBzaWRlIGhlYXZ5IGFuZCBkb3duKSAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNyIgZD0iTSA1MjAgNTIwIFYgMjUwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gNDgwIDUyMCBIIDU2MCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDM3MiAyODIgTCA2NjggMjE4Ii8+CiAgICA8Y2lyY2xlIGN4PSI1MjAiIGN5PSIyNTAiIHI9IjkiIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPCEtLSBsZWZ0IHBhbiAobG93KTogT05FIGJpZywgZ29vZCB0aGluZyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDM3MiAyODIgTCAzNDAgMzkyIE0gMzcyIDI4MiBMIDQyNCAzOTIiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMjYgMzkyIEggNDM4IEMgNDMyIDQyMCAzNDAgNDIwIDMyNiAzOTIgWiIvPgogICAgPHBhdGggZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDM4MiAzOTIgQyAzNDAgMzgwIDMzOCAzMjYgMzgyIDMxNiBDIDQyNiAzMjYgNDI0IDM4MCAzODIgMzkyIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAzODIgMzE2IHEgNCAtMTQgMjAgLTE4Ii8+CiAgICA8IS0tIHJpZ2h0IHBhbiAoaGlnaCk6IGxvdHMgb2YgbGl0dGxlIHRoaW5ncyAtLT4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDY2OCAyMTggTCA2MzYgMzA0IE0gNjY4IDIxOCBMIDcxNiAzMDQiLz4KICAgIDxwYXRoIGZpbGw9IiNmZGZjZmEiIHN0cm9rZS13aWR0aD0iNiIgZD0iTSA2MjQgMzA0IEggNzI4IEMgNzIyIDMzMCA2MzYgMzMwIDYyNCAzMDQgWiIvPgogICAgPGNpcmNsZSBjeD0iNjQwIiBjeT0iMjk2IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2NjIiIGN5PSIyOTYiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPjxjaXJjbGUgY3g9IjY4NCIgY3k9IjI5NiIgcj0iOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNzA2IiBjeT0iMjk2IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDxjaXJjbGUgY3g9IjY1MSIgY3k9IjI3OSIgcj0iOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGNpcmNsZSBjeD0iNjczIiBjeT0iMjc5IiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2OTUiIGN5PSIyNzkiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPGNpcmNsZSBjeD0iNjYyIiBjeT0iMjYyIiByPSI4IiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI2ODQiIGN5PSIyNjIiIHI9IjgiIHN0cm9rZS13aWR0aD0iNCIvPgogICAgPCEtLSB0aGUgZmlndXJlLCBzdGFuZGluZyBhdCBsZWZ0LCBvbmUgYXJtIG91dCB0b3dhcmQgdGhlIHNjYWxlIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI3IiBkPSJNIDE0NiAyMzIgQyAxNzggMjMyIDE4OCAyNjQgMTc2IDI5MCBDIDE2NCAzMTYgMTI4IDMxNiAxMTYgMjkwIEMgMTA0IDI2MiAxMTQgMjMyIDE0NiAyMzIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAxNzggMjc0IEwgMTk0IDI4NiBMIDE3NiAyOTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxMzQgMjUyIEwgMTY4IDI1MiIvPgogICAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMjY4IiByPSI0LjUiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMTUwIDMwMCBRIDE2NCAzMDggMTc0IDI5OCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDEyNiAzMDYgQyAxMDAgMzQyIDkwIDM5MCA5OCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDE2OCAzMTggQyAxNzIgMzU2IDE2MCA0MDAgMTQ4IDQzNiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMTI2IDMwNiBDIDE0MiAzMjAgMTU2IDMyMiAxNjggMzE4Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTIwIDQzNiBMIDEzMiA1MjAgTCAxNjIgNTIwIE0gOTggNDM2IEwgODIgNTIwIEwgNTIgNTIwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSA5OCA0MzYgUSAxMTIgNDQ4IDEyNCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxNTYgMzM2IEwgMjE0IDM1MiBMIDI1OCAzMzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxNDYgMzQ0IEwgMTcwIDQwMCBMIDE3OCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDI0NCAzMDAgTCAyMzIgMjg0IE0gMjY2IDMwNCBMIDI3MCAyODYiLz4KICA8L2c+Cjwvc3ZnPgo=" width="800" height="378" alt="Line drawing of a person beside a balance scale where one large item outweighs a pile of small ones">
+      <img class="home-art" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDIxNSA3NDAgMzIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM0NiI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8IS0tIHJpc2luZyBzdW4gYmVoaW5kIC0tPgogICAgPHBhdGggZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDQ4MCA1MjAgQyA0ODAgNDU2IDUzNiA0MjAgNjEwIDQyMCBDIDY4NCA0MjAgNzQwIDQ1NiA3NDAgNTIwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MTAgMzkyIFYgMzU4IE0gNTM0IDQxMCBMIDUxMCAzODQgTSA2ODYgNDEwIEwgNzEwIDM4NCBNIDQ4OCA0NTIgTCA0NTYgNDQwIE0gNzMyIDQ1MiBMIDc2NCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MCA1MjAgTCA3NjAgNTIwIi8+CiAgICA8IS0tIHNtYWxsIHRhYmxlIHdpdGggYSBtb3JuaW5nIGNvZmZlZSwgc3RlYW0gcmlzaW5nIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDI3MCA0NDAgSCAzNzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODYgNDQwIFYgNTIwIE0gMzU0IDQ0MCBWIDUyMCIvPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDI5OCA0NDAgTCAyOTQgNDAwIEggMzQ0IEwgMzQwIDQ0MCBaIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQuNSIgZD0iTSAzNDQgNDEwIHEgMTggMCAxNiAxNCBxIC0yIDEyIC0xOCAxMCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMzEwIDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIE0gMzI4IDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIi8+CiAgICA8IS0tIHRoZSBwZXJzb246IGhlYWQgc2xpZ2h0bHkgYm93ZWQsIGV5ZXMgY2xvc2VkLCBnZW50bGUgc21pbGUgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMTY2IDIzMiBDIDE5OCAyMzIgMjA4IDI2NCAxOTYgMjkwIEMgMTg0IDMxNiAxNDggMzE2IDEzNiAyOTAgQyAxMjQgMjYyIDEzNCAyMzIgMTY2IDIzMiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE5OCAyNzYgTCAyMTIgMjg4IEwgMTk2IDI5NCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE3MCAyNjggUSAxODAgMjc3IDE5MCAyNjgiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNC41IiBkPSJNIDE2NCAyOTQgUSAxNzggMzA2IDE5MiAyOTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAxNTQgMjM4IFEgMTcyIDIyNiAxOTAgMjQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMTQ2IDMwNiBDIDEyMCAzNDIgMTEwIDM5MCAxMTggNDM2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxODggMzE4IEMgMTkyIDM1NiAxODAgNDAwIDE2OCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDE0NiAzMDYgQyAxNjIgMzIwIDE3NiAzMjIgMTg4IDMxOCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDE0MCA0MzYgTCAxNTIgNTIwIEwgMTgyIDUyMCBNIDExOCA0MzYgTCAxMDIgNTIwIEwgNzIgNTIwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxMTggNDM2IFEgMTMyIDQ0OCAxNDQgNDM2Ii8+CiAgICA8IS0tIGJvdGggaGFuZHMgcHJlc3NlZCB0b2dldGhlciBhdCB0aGUgaGVhcnQgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTc2IDMzNiBMIDIxNCAzNzIgTCAyMzggMzU2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTY2IDM0NCBMIDE5NiAzOTYgTCAyNDIgMzY2Ii8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0gMjMyIDMzNiBDIDI2MiAzNDAgMjY4IDM2NiAyNTIgMzg4IEMgMjM0IDM4MCAyMjYgMzU4IDIzMiAzMzYgWiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDIzNiAzNDYgQyAyNDQgMzU4IDI0NiAzNzAgMjQ4IDM4MCIvPgogICAgPCEtLSB3YXJtdGggLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyODIgMzMwIEwgMjk2IDMxNiBNIDI5MiAzNTQgTCAzMTIgMzUwIE0gMjUwIDMwOCBMIDI1NCAyODgiLz4KICA8L2c+Cjwvc3ZnPgo=" width="800" height="346" alt="Line drawing of a person with eyes closed and hands pressed together, smiling beside a cup of coffee at sunrise">
 
       <div class="band">
         <p class="bio">Join my free New Idea Newsletter and receive one interesting idea every Monday in your inbox</p>
@@ -366,9 +375,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       <div class="quads">
         <div class="quad" data-topic="mindset" data-title="Mindset">
           <h3 class="quad-title">Mindset</h3>
+          <a class="intro-link" href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
           <a class="intro-link" href="#/post/less-is-more">Less Is More</a>
           <a class="intro-link" href="#/post/what-good-looks-like">What Good Looks Like</a>
-          <a class="intro-link" href="#/post/is-it-really-a-problem">Some Obstacles Are Opportunities</a>
+          <a class="intro-link more" href="#/post/is-it-really-a-problem">Some Obstacles Are Opportunities</a>
           <a class="intro-link more" href="#/post/goals-are-the-death-of-interesting">Goals Make You Boring</a>
           <a class="quad-more" href="#/topic/mindset">Read more articles on Mindset <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
@@ -384,11 +394,11 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <a class="intro-link" href="#/post/make-it-for-you">Make It for You</a>
           <a class="quad-more" href="#/topic/creativity">Read more articles on Creativity <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad" data-topic="money" data-title="Money">
-          <h3 class="quad-title">Money</h3>
+        <div class="quad" data-topic="wealth" data-title="Wealth">
+          <h3 class="quad-title">Wealth</h3>
           <a class="intro-link" href="#/post/harness-the-power-of-compounding">Harness the Power of Compounding</a>
           <a class="intro-link" href="#/post/being-wealthy-means-being-a-business-owner">Own a Business</a>
-          <a class="quad-more" href="#/topic/money">Read more articles on Money <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
+          <a class="quad-more" href="#/topic/wealth">Read more articles on Wealth <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
         <div class="quad" data-topic="technology" data-title="Technology">
           <h3 class="quad-title">Technology</h3>
@@ -574,6 +584,24 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <p>The other main reason why people don’t stick with compound investing is that they have other financial needs to attend to. They may forget why they started their Vanguard ETF account in the first place, and pull that money out when they need to purchase an engagement ring. Or, they may simply have other expenses that supersede the need to continue with their investment. Either way, it’s understandable - particularly in the current economic climate.</p>
           <p>Regardless of the reasons why people are unable to benefit from the effects of compounding over the long term, it’s a proven way to create sustainable wealth. If that’s something that interests you, it might be worth exploring the underlying reasons that are currently preventing you from doing so.</p>
         </div>
+        <div class="body" data-slug="develop-gratitude-instead-of-chasing-happiness">
+          <div class="meta">October 2026</div>
+          <img class="essay-art essay-art-brick" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDIxNSA3NDAgMzIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM0NiI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8IS0tIHJpc2luZyBzdW4gYmVoaW5kIC0tPgogICAgPHBhdGggZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDQ4MCA1MjAgQyA0ODAgNDU2IDUzNiA0MjAgNjEwIDQyMCBDIDY4NCA0MjAgNzQwIDQ1NiA3NDAgNTIwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MTAgMzkyIFYgMzU4IE0gNTM0IDQxMCBMIDUxMCAzODQgTSA2ODYgNDEwIEwgNzEwIDM4NCBNIDQ4OCA0NTIgTCA0NTYgNDQwIE0gNzMyIDQ1MiBMIDc2NCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MCA1MjAgTCA3NjAgNTIwIi8+CiAgICA8IS0tIHNtYWxsIHRhYmxlIHdpdGggYSBtb3JuaW5nIGNvZmZlZSwgc3RlYW0gcmlzaW5nIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDI3MCA0NDAgSCAzNzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODYgNDQwIFYgNTIwIE0gMzU0IDQ0MCBWIDUyMCIvPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDI5OCA0NDAgTCAyOTQgNDAwIEggMzQ0IEwgMzQwIDQ0MCBaIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQuNSIgZD0iTSAzNDQgNDEwIHEgMTggMCAxNiAxNCBxIC0yIDEyIC0xOCAxMCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMzEwIDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIE0gMzI4IDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIi8+CiAgICA8IS0tIHRoZSBwZXJzb246IGhlYWQgc2xpZ2h0bHkgYm93ZWQsIGV5ZXMgY2xvc2VkLCBnZW50bGUgc21pbGUgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMTY2IDIzMiBDIDE5OCAyMzIgMjA4IDI2NCAxOTYgMjkwIEMgMTg0IDMxNiAxNDggMzE2IDEzNiAyOTAgQyAxMjQgMjYyIDEzNCAyMzIgMTY2IDIzMiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE5OCAyNzYgTCAyMTIgMjg4IEwgMTk2IDI5NCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE3MCAyNjggUSAxODAgMjc3IDE5MCAyNjgiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNC41IiBkPSJNIDE2NCAyOTQgUSAxNzggMzA2IDE5MiAyOTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAxNTQgMjM4IFEgMTcyIDIyNiAxOTAgMjQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMTQ2IDMwNiBDIDEyMCAzNDIgMTEwIDM5MCAxMTggNDM2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxODggMzE4IEMgMTkyIDM1NiAxODAgNDAwIDE2OCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDE0NiAzMDYgQyAxNjIgMzIwIDE3NiAzMjIgMTg4IDMxOCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDE0MCA0MzYgTCAxNTIgNTIwIEwgMTgyIDUyMCBNIDExOCA0MzYgTCAxMDIgNTIwIEwgNzIgNTIwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxMTggNDM2IFEgMTMyIDQ0OCAxNDQgNDM2Ii8+CiAgICA8IS0tIGJvdGggaGFuZHMgcHJlc3NlZCB0b2dldGhlciBhdCB0aGUgaGVhcnQgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTc2IDMzNiBMIDIxNCAzNzIgTCAyMzggMzU2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTY2IDM0NCBMIDE5NiAzOTYgTCAyNDIgMzY2Ii8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0gMjMyIDMzNiBDIDI2MiAzNDAgMjY4IDM2NiAyNTIgMzg4IEMgMjM0IDM4MCAyMjYgMzU4IDIzMiAzMzYgWiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDIzNiAzNDYgQyAyNDQgMzU4IDI0NiAzNzAgMjQ4IDM4MCIvPgogICAgPCEtLSB3YXJtdGggLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyODIgMzMwIEwgMjk2IDMxNiBNIDI5MiAzNTQgTCAzMTIgMzUwIE0gMjUwIDMwOCBMIDI1NCAyODgiLz4KICA8L2c+Cjwvc3ZnPgo=" width="800" height="346" alt="Line drawing of a person with eyes closed and hands pressed together, smiling beside a cup of coffee at sunrise">
+          <p>Shock horror, but happiness is great when you’ve got it. Flowers smell nicer and beer tastes better when sprinkled in with a spoonful of joy.</p>
+          <p>Not to rain on happiness’ parade (which I will proceed to do), I’ve got beef with happiness.</p>
+          <p>My qualm with happiness is that it never lasts. Nobody feels eternally happy, and if they did, it probably wouldn’t feel quite as good. Ironically, happiness would feel less happy if we experienced it all the time. Unfortunately, the dopamine-reward pathway of our brain is always chasing the next hit once the previous buzz has worn off. Scarcity yields value.</p>
+          <p>And yet the rhetoric of being happy perpetuates. ‘Do what makes you happy’ is commonly advised to young people when choosing a career path. Such advice positions happiness as the ultimate goal, and suggests that the pursuit of happiness itself is advisable. Marketing strategies commonly position products as filling a ‘happiness void’ in people’s lives. You only have to ask Will Smith about his movie, <em>The Pursuit of Happyness</em>, to gauge how endemic the idea of happiness is in our zeitgeist.</p>
+          <p>To be clear, there’s nothing wrong with being happy. As stated before, happiness is undefeated as far as emotions go.</p>
+          <p>But if happiness is an ephemeral feeling, why would we continually pursue it? When we have it, life is beer and skittles. But what about the moments in between? Should we pursue happiness during those times?</p>
+          <p>I don’t think so.</p>
+          <p>If happiness is a feeling, we shouldn’t chase it any more than we chase sadness, elation, joy, or pain. We should bathe in happiness when it arrives, but not cling to it or chase it. Acknowledgement, acceptance and our relationship to emotions are as important as the emotions themselves.</p>
+          <p>Instead of chasing after the feeling of happiness, I’d promote developing gratitude. Gratitude is an action, not an emotion. It’s a practice, a habit, a muscle that, when built, will change your perspective for the better and provide myriad other benefits.</p>
+          <p>Being grateful for what you have grounds you in the present. Small things are noticed and appreciated. Your morning coffee will never taste as good as when you’re in a grateful mindset.</p>
+          <p>Gratitude promotes acceptance of what is, rather than what could be. Through the lens of gratitude, we can recognise what we have and accept it for its imperfections. Instead of continually chasing after more, we become satisfied and appreciative of less.</p>
+          <p>Because gratitude is an action, we can do it every day. Gratitude doesn’t rely upon circumstance or material possessions, and it has no preconditions. For me, this is the key distinction between happiness and gratitude: happiness is a feeling, whilst gratitude is something one does. This means that regardless of your external world, you can always be grateful for something. Gratitude is reliable. Happiness is a wave that may or may not arrive on your shoreline.</p>
+          <p>My position is to enjoy happiness when it arrives, but not to seek it out. Emotions like happiness give us vital clues as to what’s important to us, and in some cases serve as signposts.</p>
+          <p>But instead of chasing after the feeling of happiness, it may be more helpful to develop your gratitude muscle. Not only will this ground you in the present and help you to accept what is, but it will also give you an actionable habit to lean on every day, regardless of how you feel or what you are doing.</p>
+        </div>
         <div class="body" data-default>
           <p>Replace this text with the post.</p>
         </div>
@@ -606,6 +634,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 <script>
 (function () {
   var titles = {
+    'develop-gratitude-instead-of-chasing-happiness': 'Develop Gratitude Instead of Chasing Happiness',
     'harness-the-power-of-compounding': 'Harness the Power of Compounding',
     'less-is-more': 'Less Is More',
     'make-it-for-you': 'Make It for You',
@@ -669,6 +698,9 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       document.title = key === 'archive' ? 'Articles | Luke W. Jennings' : 'Luke W. Jennings';
     }
     for (var k in views) views[k].classList.toggle('on', k === key);
+    var hd = document.querySelector('header');
+    hd.classList.remove('draw');
+    if (key === 'home') { void hd.offsetWidth; hd.classList.add('draw'); }
     var cur = (key === 'post' || key === 'topic') ? 'archive' : key, links = document.querySelectorAll('header a[data-nav]');
     for (var n = 0; n < links.length; n++) {
       var on = links[n].getAttribute('data-nav') === cur;
@@ -746,6 +778,25 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
       clearGaCookies();
     }
   });
+  // Gently pop sections into view as the visitor scrolls down the home page.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var items = document.querySelectorAll('#home .band > *, #home .intro-left, #home .intro-right');
+    if (!items.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    for (var r = 0; r < items.length; r++) {
+      items[r].classList.add('reveal');
+      if (items[r].parentNode.classList.contains('band')) items[r].style.transitionDelay = (r * 0.12) + 's';
+      if (items[r].classList.contains('intro-right')) items[r].style.transitionDelay = '0.2s';
+      io.observe(items[r]);
+    }
+    document.documentElement.classList.add('reveal-on');
+  })();
   if (!savedChoice()) notice.hidden = false;
   route();
 })();
