@@ -191,7 +191,8 @@ main { flex: 1; display: flex; flex-direction: column; }
 .footer-name + .site-footer { margin-top: 12px; }
 @media (max-width: 420px) { .footer-name { font-size: 26px; } }
 .quad-hidden { display: none; }
-.venn { margin: 8px auto 8px; }
+.venn { margin: 130px auto 8px; }
+@media (max-width: 759px) { .venn { margin-top: 8px; } }
 .venn-stage { position: relative; width: 100%; max-width: 760px; height: 668px; margin: 0 auto; }
 .venn-circle { position: absolute; width: 400px; height: 400px; border-radius: 50%; box-sizing: border-box; border: 1.5px solid var(--fg); mix-blend-mode: multiply; }
 .venn-mind { left: 0; top: 0; background: rgba(191, 78, 11, .13); }
@@ -202,7 +203,7 @@ main { flex: 1; display: flex; flex-direction: column; }
 .venn-text-health { left: 560px; top: 185px; }
 .venn-text-meaning { left: 380px; top: 462px; width: 220px; }
 .venn-text .quad-title { margin: 0 0 12px; font-size: 22px; text-align: center; }
-.venn-text a { display: block; padding: 6px 0; font-size: 16px; line-height: 1.35; text-align: center; text-decoration: none; color: var(--fg); }
+.venn-text a { display: block; padding: 11px 0; font-size: 16px; line-height: 1.35; text-align: center; text-decoration: none; color: var(--fg); }
 .venn-text a:hover { color: #bf4e0b; }
 .venn-circle { transition: transform .35s cubic-bezier(.2,.7,.2,1), background-color .35s ease; }
 .venn-text { z-index: 2; }
@@ -217,15 +218,35 @@ main { flex: 1; display: flex; flex-direction: column; }
 .venn-pop svg { display: none; }
 .venn-stage.hot-mind .venn-text-mind .venn-pop, .venn-text-mind:focus-within .venn-pop, .venn-stage.hot-health .venn-text-health .venn-pop, .venn-text-health:focus-within .venn-pop { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
 @media (max-width: 759px), (hover: none) { .venn-text a.venn-pop { position: static; transform: none; opacity: 1; pointer-events: auto; margin: 10px auto 0; display: flex; justify-content: center; width: auto; } }
+.venn-text .quad-title a.venn-title-link { display: inline; padding: 0; font-size: inherit; line-height: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.venn-text .quad-title a.venn-title-link:hover { color: #bf4e0b; text-decoration-color: #bf4e0b; }
+.venn-arcs { display: none; }
+@media (min-width: 760px) {
+  .venn-stage { height: 710px; }
+  .venn-arcs { display: block; position: absolute; left: 0; top: 0; width: 760px; height: 710px; overflow: visible; pointer-events: none; z-index: 3; }
+  .venn-text .quad-title { display: none; }
+  .venn-arc { transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .venn-arc-link { pointer-events: auto; cursor: pointer; }
+  .venn-arcs text { font-family: inherit; font-size: 23px; font-weight: 600; fill: var(--fg); letter-spacing: .02em; transition: fill .2s ease; }
+  .venn-arc-link:hover text { fill: #bf4e0b; }
+  .venn-arc-mind { transform-origin: 200px 200px; }
+  .venn-arc-health { transform-origin: 560px 200px; }
+  .venn-arc-meaning { transform-origin: 380px 462px; }
+  .venn-stage.hot-mind .venn-arc-mind, .venn-stage.hot-health .venn-arc-health, .venn-stage.hot-meaning .venn-arc-meaning { transform: scale(1.14); }
+}
+@media (min-width: 760px) and (hover: none) { .venn-arc { transition: none; } }
 .venn-more { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 48px; margin-top: 8px; }
+.venn-readmore { display: none !important; }
 @media (max-width: 759px) {
-  .venn-stage { height: auto; display: flex; flex-direction: column; align-items: center; }
+  .venn-stage { height: auto; display: block; }
   .venn-circle { display: none; }
-  .venn-text, .venn-text-mind, .venn-text-health, .venn-text-meaning { position: relative; left: auto; top: auto; transform: none; width: min(100%, 360px); box-sizing: border-box; padding: 40px 48px; border: 1.5px solid var(--fg); border-radius: 50%; }
-  .venn-text-mind { background: rgba(191, 78, 11, .13); }
-  .venn-text-health { background: rgba(138, 119, 103, .16); margin-top: -28px; }
-  .venn-text-meaning { background: rgba(120, 175, 230, .22); margin-top: -28px; }
-  .venn-more { flex-direction: column; align-items: center; margin-top: 20px; }
+  .venn-text, .venn-text-mind, .venn-text-health, .venn-text-meaning { position: static; transform: none; width: auto; box-sizing: border-box; padding: 32px 0 16px; border: 0; border-radius: 0; background: none; text-align: left; }
+  .venn-text .quad-title { margin: 0 0 20px; font-size: 24px; text-align: left; }
+  .venn-text .quad-title a.venn-title-link { text-decoration: none !important; border: 0; padding: 0; }
+  .venn-text a { padding: 15px 0; font-size: 20px; line-height: 1.4; text-align: left; border-bottom: 1px solid var(--rule); }
+  .venn-text .quad-title + a { border-top: 1px solid var(--rule); }
+  .venn-text a.venn-readmore { display: inline-flex !important; align-items: center; gap: 12px; margin-top: 24px; padding: 0; border: 0; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .venn-text a.venn-readmore:hover { color: #bf4e0b; }
 }
 .quads { display: grid; grid-template-columns: 1fr 1fr; }
 .quad { padding: 40px 40px 28px 0; min-height: 200px; }
@@ -282,7 +303,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 
   <main>
     <section id="home" class="view on">
-      <p class="lead">Good ideas, for life.</p>
+      <p class="lead">Simple ideas, for life.</p>
       <ul>
         <li><a href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a></li>
       </ul>
@@ -308,6 +329,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         </div>
         <div class="intro-right">
           <h3 class="intro-sub">Previous New Idea Newsletters:</h3>
+          <a class="intro-link" href="#/newsletter">Accepting your experience is difficult but necessary - Monday, 2nd November</a>
           <a class="intro-link" href="#/newsletter">People-pleasing is selfish - Monday, 26th October</a>
           <a class="intro-link" href="#/newsletter">Having to do something to be enough - Monday, 19th October</a>
         </div>
@@ -374,6 +396,18 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <input type="submit" value="Try it">
       </form>
       <p class="credit"><a href="https://buttondown.com/refer/Lukewjennings" target="_blank" rel="noopener">Forms by Buttondown.</a></p>
+      <article class="issue" id="issue-acceptance">
+        <p class="issue-label">New Idea Newsletter · Monday, 2nd November</p>
+        <h3>Accepting your experience is difficult but necessary</h3>
+        <h4>The idea</h4>
+        <p>It’s easy to judge your present moment experience, yet difficult to recognise and accept it.</p>
+        <h4>The quote</h4>
+        <p class="quote">“Radical acceptance is the acknowledgment of our present moment experience. It means feeling sorrow or pain without resisting. It means feeling dislike for something or someone without judging ourselves for the feeling, or being driven to act on it”.</p>
+        <h4>Reference</h4>
+        <p><em>Radical Acceptance</em> - Tara Brach</p>
+        <h4>What I make of it</h4>
+        <p>We are our own worst enemies. When it comes to how we experience our emotions, it is incredibly easy to be judgemental of yourself. It’s common to blame yourself for feeling a certain way, or feeling shame for the emotions you’ve experienced. But doing so doesn’t actually help you. It only creates resistance. It’s only when we accept our response that we can choose how to proceed.</p>
+      </article>
       <article class="issue" id="issue-people-pleasing">
         <p class="issue-label">New Idea Newsletter · Monday, 26th October</p>
         <h3>People-pleasing is selfish.</h3>
@@ -410,39 +444,56 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
 
     <section id="archive" class="view">
       <h2 class="sr-only">Essays</h2>
-            <p class="essays-intro">I write about ideas that make life easier.</p>
+            <p class="essays-intro">Life is complex.<br>I write about ideas that make it simpler.</p>
       <div class="venn">
         <div class="venn-stage">
+        <svg class="venn-arcs" viewBox="0 0 760 710" aria-hidden="false" focusable="false">
+          <defs>
+            <path id="arcMind" d="M 48.7 48.7 A 214 214 0 0 1 351.3 48.7"/>
+            <path id="arcHealth" d="M 408.7 48.7 A 214 214 0 0 1 711.3 48.7"/>
+            <path id="arcMeaning" d="M 180.8 577.0 A 230 230 0 0 0 579.2 577.0"/>
+          </defs>
+          <g class="venn-arc venn-arc-mind"><a class="venn-arc-link" href="#/topic/mindset"><text><textPath href="#arcMind" startOffset="50%" text-anchor="middle">Mind</textPath></text></a></g>
+          <g class="venn-arc venn-arc-health"><a class="venn-arc-link" href="#/topic/health"><text><textPath href="#arcHealth" startOffset="50%" text-anchor="middle">Body</textPath></text></a></g>
+          <g class="venn-arc venn-arc-meaning"><a class="venn-arc-link" href="#/topic/purpose"><text><textPath href="#arcMeaning" startOffset="50%" text-anchor="middle">Purpose</textPath></text></a></g>
+        </svg>
           <div class="venn-circle venn-mind"></div>
           <div class="venn-circle venn-health"></div>
           <div class="venn-circle venn-meaning"></div>
           <div class="venn-text venn-text-mind">
-            <h3 class="quad-title">Mental Health</h3>
+            <h3 class="quad-title"><a class="venn-title-link" href="#/topic/mindset">Mind</a></h3>
             <a href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
             <a href="#/post/less-is-more">Less Is More</a>
             <a href="#/post/goals-are-the-death-of-interesting">Goals Make You Boring</a>
-            <a class="venn-pop" href="#/topic/mindset">Read more articles on Mental Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
+            <a class="venn-readmore" href="#/topic/mindset">Read more articles on Mental Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
           </div>
           <div class="venn-text venn-text-health">
-            <h3 class="quad-title">Physical Health</h3>
+            <h3 class="quad-title"><a class="venn-title-link" href="#/topic/health">Body</a></h3>
             <a href="#/post/how-to-be-frustrated">A Better Way of Being Frustrated</a>
             <a href="#/post/the-good-part-of-getting-sick">The Best Things About Being Sick</a>
             <a href="#/post/why-your-health-is-all-you-have">Why Your Health Matters</a>
-            <a class="venn-pop" href="#/topic/health">Read more articles on Physical Health</a>
+            <a class="venn-readmore" href="#/topic/health">Read more articles on Physical Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
           </div>
           <div class="venn-text venn-text-meaning">
-            <h3 class="quad-title">Meaning</h3>
+            <h3 class="quad-title"><a class="venn-title-link" href="#/topic/purpose">Purpose</a></h3>
             <a href="#/post/make-it-for-you">Make It for You</a>
             <a href="#/post/what-good-looks-like">What Good Looks Like</a>
+            <a href="#/post/work-algorithms-and-male-escorts">Work, Algorithms &amp; Male Escorts</a>
+            <a class="venn-readmore" href="#/topic/purpose">Read more articles on Purpose <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
           </div>
         </div>
       </div>
       <div class="quads">
+        <div class="quad quad-hidden" data-topic="purpose" data-title="Purpose">
+          <h3 class="quad-title">Purpose</h3>
+          <a class="intro-link" href="#/post/make-it-for-you">Make It for You</a>
+          <a class="intro-link" href="#/post/what-good-looks-like">What Good Looks Like</a>
+          <a class="intro-link" href="#/post/work-algorithms-and-male-escorts">Work, Algorithms &amp; Male Escorts</a>
+        </div>
         <div class="quad quad-hidden" data-topic="mindset" data-title="Mental Health">
           <h3 class="quad-title">Mental Health</h3>
           <a class="intro-link" href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
           <a class="intro-link" href="#/post/less-is-more">Less Is More</a>
-          <a class="intro-link" href="#/post/what-good-looks-like">What Good Looks Like</a>
           <a class="intro-link more" href="#/post/is-it-really-a-problem">Some Obstacles Are Opportunities</a>
           <a class="intro-link more" href="#/post/goals-are-the-death-of-interesting">Goals Make You Boring</a>
           <a class="quad-more" href="#/topic/mindset">Read more articles on Mental Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
@@ -454,19 +505,19 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <a class="intro-link" href="#/post/why-your-health-is-all-you-have">Why Your Health Matters</a>
           <a class="quad-more" href="#/topic/health">Read more articles on Physical Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad" data-topic="creativity" data-title="Creativity">
+        <div class="quad quad-hidden" data-topic="creativity" data-title="Creativity">
           <h3 class="quad-title">Creativity</h3>
           <a class="intro-link" href="#/post/make-it-for-you">Make It for You</a>
           <a class="quad-more" href="#/topic/creativity">Read more articles on Creativity <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad" data-topic="wealth" data-title="Wealth">
+        <div class="quad quad-hidden" data-topic="wealth" data-title="Wealth">
           <h3 class="quad-title">Wealth</h3>
           <a class="intro-link" href="#/post/live-below-your-means">Live Below Your Means</a>
           <a class="intro-link" href="#/post/harness-the-power-of-compounding">Harness the Power of Compounding</a>
           <a class="intro-link" href="#/post/being-wealthy-means-being-a-business-owner">Own a Business</a>
           <a class="quad-more" href="#/topic/wealth">Read more articles on Wealth <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
         </div>
-        <div class="quad" data-topic="technology" data-title="Technology">
+        <div class="quad quad-hidden" data-topic="technology" data-title="Technology">
           <h3 class="quad-title">Technology</h3>
           <a class="intro-link" href="#/post/the-untouchables">The Untouchables</a>
           <a class="intro-link" href="#/post/work-algorithms-and-male-escorts">Work, Algorithms &amp; Male Escorts</a>
@@ -653,20 +704,22 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         <div class="body" data-slug="develop-gratitude-instead-of-chasing-happiness">
           <div class="meta">October 2026</div>
           <img class="essay-art essay-art-brick" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQwIDIxNSA3NDAgMzIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjM0NiI+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8IS0tIHJpc2luZyBzdW4gYmVoaW5kIC0tPgogICAgPHBhdGggZmlsbD0iI2JmNGUwYiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDQ4MCA1MjAgQyA0ODAgNDU2IDUzNiA0MjAgNjEwIDQyMCBDIDY4NCA0MjAgNzQwIDQ1NiA3NDAgNTIwIFoiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MTAgMzkyIFYgMzU4IE0gNTM0IDQxMCBMIDUxMCAzODQgTSA2ODYgNDEwIEwgNzEwIDM4NCBNIDQ4OCA0NTIgTCA0NTYgNDQwIE0gNzMyIDQ1MiBMIDc2NCA0NDAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSA2MCA1MjAgTCA3NjAgNTIwIi8+CiAgICA8IS0tIHNtYWxsIHRhYmxlIHdpdGggYSBtb3JuaW5nIGNvZmZlZSwgc3RlYW0gcmlzaW5nIC0tPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDI3MCA0NDAgSCAzNzAiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyODYgNDQwIFYgNTIwIE0gMzU0IDQ0MCBWIDUyMCIvPgogICAgPHBhdGggZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDI5OCA0NDAgTCAyOTQgNDAwIEggMzQ0IEwgMzQwIDQ0MCBaIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjQuNSIgZD0iTSAzNDQgNDEwIHEgMTggMCAxNiAxNCBxIC0yIDEyIC0xOCAxMCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzLjUiIGQ9Ik0gMzEwIDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIE0gMzI4IDM4NiBxIC04IC0xMiAwIC0yMiBxIDggLTEwIDAgLTIyIi8+CiAgICA8IS0tIHRoZSBwZXJzb246IGhlYWQgc2xpZ2h0bHkgYm93ZWQsIGV5ZXMgY2xvc2VkLCBnZW50bGUgc21pbGUgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMTY2IDIzMiBDIDE5OCAyMzIgMjA4IDI2NCAxOTYgMjkwIEMgMTg0IDMxNiAxNDggMzE2IDEzNiAyOTAgQyAxMjQgMjYyIDEzNCAyMzIgMTY2IDIzMiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE5OCAyNzYgTCAyMTIgMjg4IEwgMTk2IDI5NCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE3MCAyNjggUSAxODAgMjc3IDE5MCAyNjgiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNC41IiBkPSJNIDE2NCAyOTQgUSAxNzggMzA2IDE5MiAyOTIiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iNCIgZD0iTSAxNTQgMjM4IFEgMTcyIDIyNiAxOTAgMjQwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMTQ2IDMwNiBDIDEyMCAzNDIgMTEwIDM5MCAxMTggNDM2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxODggMzE4IEMgMTkyIDM1NiAxODAgNDAwIDE2OCA0MzYiLz4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMy41IiBkPSJNIDE0NiAzMDYgQyAxNjIgMzIwIDE3NiAzMjIgMTg4IDMxOCIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDE0MCA0MzYgTCAxNTIgNTIwIEwgMTgyIDUyMCBNIDExOCA0MzYgTCAxMDIgNTIwIEwgNzIgNTIwIi8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAxMTggNDM2IFEgMTMyIDQ0OCAxNDQgNDM2Ii8+CiAgICA8IS0tIGJvdGggaGFuZHMgcHJlc3NlZCB0b2dldGhlciBhdCB0aGUgaGVhcnQgLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTc2IDMzNiBMIDIxNCAzNzIgTCAyMzggMzU2Ii8+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMTY2IDM0NCBMIDE5NiAzOTYgTCAyNDIgMzY2Ii8+CiAgICA8cGF0aCBmaWxsPSIjZmRmY2ZhIiBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0gMjMyIDMzNiBDIDI2MiAzNDAgMjY4IDM2NiAyNTIgMzg4IEMgMjM0IDM4MCAyMjYgMzU4IDIzMiAzMzYgWiIvPgogICAgPHBhdGggc3Ryb2tlLXdpZHRoPSIzIiBkPSJNIDIzNiAzNDYgQyAyNDQgMzU4IDI0NiAzNzAgMjQ4IDM4MCIvPgogICAgPCEtLSB3YXJtdGggLS0+CiAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjMuNSIgZD0iTSAyODIgMzMwIEwgMjk2IDMxNiBNIDI5MiAzNTQgTCAzMTIgMzUwIE0gMjUwIDMwOCBMIDI1NCAyODgiLz4KICA8L2c+Cjwvc3ZnPgo=" width="800" height="346" alt="Line drawing of a person with eyes closed and hands pressed together, smiling beside a cup of coffee at sunrise">
-          <p>Shock horror, but happiness is great when you’ve got it. Flowers smell nicer and beer tastes better when sprinkled in with a spoonful of joy.</p>
-          <p>Not to rain on happiness’ parade (which I will proceed to do), I’ve got beef with happiness.</p>
-          <p>My qualm with happiness is that it never lasts. Nobody feels eternally happy, and if they did, it probably wouldn’t feel quite as good. Ironically, happiness would feel less happy if we experienced it all the time. Unfortunately, the dopamine-reward pathway of our brain is always chasing the next hit once the previous buzz has worn off. Scarcity yields value.</p>
-          <p>And yet the rhetoric of being happy perpetuates. ‘Do what makes you happy’ is commonly advised to young people when choosing a career path. Such advice positions happiness as the ultimate goal, and suggests that the pursuit of happiness itself is advisable. Marketing strategies commonly position products as filling a ‘happiness void’ in people’s lives. You only have to ask Will Smith about his movie, <em>The Pursuit of Happyness</em>, to gauge how endemic the idea of happiness is in our zeitgeist.</p>
+          <p>Happiness is one of the greatest feelings. Flowers smell nicer, and beer tastes better when sprinkled with a spoonful of joy.</p>
+          <p>Not to rain on the happiness parade (which I will proceed to do), but I’ve got beef with happiness.</p>
+          <p>My qualm is not with happiness itself, but the fact that it never lasts. Not even Anh Do, The Happiest Refugee, feels good all of the time. Our brains work in such a way that the effect of dopamine and other neurotransmitters that make us feel good simply wears off.</p>
+          <p>Even if we did feel happy all of the time, because of that same mechanism, happiness probably wouldn’t feel as good as what it did initially. Ironically, happiness would feel less happy if we experienced it all of the time. Much like someone who injects drugs, the first high is always the best one. It turns out that scarcity also yields happiness.</p>
+          <p>And yet the rhetoric of trying to be happy persists. ‘Do what makes you happy’ is commonly advised to young people when choosing a career path. Such advice positions happiness as the ultimate directive, and suggests that the pursuit of happiness itself is advisable. Marketing strategies commonly position products as filling a ‘happiness void’ in people’s lives. You only have to ask Will Smith about his movie, The Pursuit of Happyness, to gauge how endemic the idea of happiness is in our zeitgeist.</p>
           <p>To be clear, there’s nothing wrong with being happy. As stated before, happiness is undefeated as far as emotions go.</p>
           <p>But if happiness is an ephemeral feeling, why would we continually pursue it? When we have it, life is beer and skittles. But what about the moments in between? Should we pursue happiness during those times?</p>
-          <p>I don’t think so.</p>
-          <p>If happiness is a feeling, we shouldn’t chase it any more than we chase sadness, elation, joy, or pain. We should bathe in happiness when it arrives, but not cling to it or chase it. Acknowledgement, acceptance and our relationship to emotions are as important as the emotions themselves.</p>
-          <p>Instead of chasing after the feeling of happiness, I’d promote developing gratitude. Gratitude is an action, not an emotion. It’s a practice, a habit, a muscle that, when built, will change your perspective for the better and provide myriad other benefits.</p>
+          <p>I don’t think we should.</p>
+          <p>If happiness is a feeling, we shouldn’t chase it any more than we chase sadness, elation, joy, or pain. We should enjoy happiness when it arrives, bathe in its glory, but not chase it or cling to it. Acknowledgement, acceptance and our relationship to emotions are as important as our experience of the emotions themselves. Chasing happiness positions us firmly on the hamster wheel, always running for the next dose.</p>
+          <p>Instead of chasing after happiness, I’d promote developing gratitude. Gratitude is an action, not an emotion. It’s a practice, a habit, a muscle that, when built, will change your perspective for the better and provide myriad other benefits.</p>
+          <p>Gratitude builds satisfaction and contentment. I’d argue that on a day-to-day basis, these feelings are just as powerful as happiness.</p>
           <p>Being grateful for what you have grounds you in the present. Small things are noticed and appreciated. Your morning coffee will never taste as good as when you’re in a grateful mindset.</p>
           <p>Gratitude promotes acceptance of what is, rather than what could be. Through the lens of gratitude, we can recognise what we have and accept it for its imperfections. Instead of continually chasing after more, we become satisfied and appreciative of less.</p>
-          <p>Because gratitude is an action, we can do it every day. Gratitude doesn’t rely upon circumstance or material possessions, and it has no preconditions. For me, this is the key distinction between happiness and gratitude: happiness is a feeling, whilst gratitude is something one does. This means that regardless of your external world, you can always be grateful for something. Gratitude is reliable. Happiness is a wave that may or may not arrive on your shoreline.</p>
+          <p>Because gratitude is an action, we can do it every day. Gratitude doesn’t rely upon circumstance or material possessions. Gratitude has no preconditions. For me, this is the key distinction between happiness and gratitude: happiness is a feeling, whilst gratitude is something we do. This means that regardless of your external world, you can always be grateful for something. Gratitude is reliable. Happiness is a wave that may or may not arrive on your shoreline.</p>
           <p>My position is to enjoy happiness when it arrives, but not to seek it out. Emotions like happiness give us vital clues as to what’s important to us, and in some cases serve as signposts.</p>
-          <p>But instead of chasing after the feeling of happiness, it may be more helpful to develop your gratitude muscle. Not only will this ground you in the present and help you to accept what is, but it will also give you an actionable habit to lean on every day, regardless of how you feel or what you are doing.</p>
+          <p>Instead of chasing after the feeling of happiness, it’s more helpful to develop your gratitude muscle. Not only will this ground you in the present and help you to accept what is, but it will also give you an actionable habit to lean on every day, regardless of how you feel or what you are doing.</p>
         </div>
         <div class="body" data-slug="live-below-your-means">
           <div class="meta">November 2026</div>
@@ -723,6 +776,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     'goals-are-the-death-of-interesting': 'Goals Make You Boring',
     'why-your-health-is-all-you-have': 'Why Your Health Matters'
   };
+(function(){var st=document.querySelector('.venn-stage');if(!st)return;
+['mind','health','meaning'].forEach(function(k){var els=st.querySelectorAll('.venn-'+k+',.venn-text-'+k+',.venn-arc-'+k);
+els.forEach(function(el){el.addEventListener('mouseenter',function(){st.classList.remove('hot-mind','hot-health','hot-meaning');st.classList.add('hot-'+k);});
+el.addEventListener('mouseleave',function(e){var t=e.relatedTarget;if(t&&t.closest&&(t.closest('.venn-'+k)||t.closest('.venn-text-'+k)||t.closest('.venn-arc-'+k)))return;st.classList.remove('hot-'+k);});});});window.addEventListener('hashchange',function(){st.classList.remove('hot-mind','hot-health','hot-meaning');});})();
     var views = { privacy: document.getElementById('privacy'), thanks: document.getElementById('thanks'), newsletter: document.getElementById('newsletter'), about: document.getElementById('about'), home: document.getElementById('home'), archive: document.getElementById('archive'), topic: document.getElementById('topic'), post: document.getElementById('post') };
   var current = null, lastTrack = { h: null, t: 0 }, lastH = '#/', lastKey = 'home';
   // Report a page view, but only if the visitor has accepted analytics.
