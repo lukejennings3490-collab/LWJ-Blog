@@ -263,6 +263,7 @@ main { flex: 1; display: flex; flex-direction: column; }
 .quad .intro-link:hover, .topic .intro-link:hover { color: #bf4e0b; }
 .quad-title + .intro-link, .topic-title + .intro-link { border-top: 1px solid var(--rule); }
 .quad .intro-link.more { display: none; }
+.topic-date { margin-left: 12px; font-size: 15px; font-style: italic; color: var(--muted); white-space: nowrap; }
 .reveal-on .reveal { opacity: 0; transform: translateY(40px) scale(.98); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
 .reveal-on .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal-on .reveal { opacity: 1; transform: none; transition: none; } }
@@ -489,9 +490,9 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <div class="venn-circle venn-meaning"></div>
           <div class="venn-text venn-text-mind">
             <h3 class="quad-title"><a class="venn-title-link" href="#/topic/mindset">Mind</a></h3>
+            <a href="#/post/it-doesnt-matter-what-happened-but-what-you-learned-does">It doesn’t matter what happened. But what you learned does</a>
             <a href="#/post/pain-is-obligatory-suffering-is-optional">Pain Is Obligatory, Suffering Is Optional</a>
             <a href="#/post/how-to-slow-down">How to Slow Down</a>
-            <a href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
             <a class="venn-readmore" href="#/topic/mindset">Read more articles on Mental Health <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h22M17 1l5 5-5 5"/></svg></a>
           </div>
           <div class="venn-text venn-text-health">
@@ -519,9 +520,10 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
         </div>
         <div class="quad quad-hidden" data-topic="mindset" data-title="Mental Health">
           <h3 class="quad-title">Mental Health</h3>
+          <a class="intro-link" href="#/post/it-doesnt-matter-what-happened-but-what-you-learned-does">It doesn’t matter what happened. But what you learned does</a>
           <a class="intro-link" href="#/post/pain-is-obligatory-suffering-is-optional">Pain Is Obligatory, Suffering Is Optional</a>
           <a class="intro-link" href="#/post/how-to-slow-down">How to Slow Down</a>
-          <a class="intro-link" href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
+          <a class="intro-link more" href="#/post/develop-gratitude-instead-of-chasing-happiness">Develop Gratitude Instead of Chasing Happiness</a>
           <a class="intro-link more" href="#/post/less-is-more">Less Is More</a>
           <a class="intro-link more" href="#/post/is-it-really-a-problem">Some Obstacles Are Opportunities</a>
           <a class="intro-link more" href="#/post/goals-are-the-death-of-interesting">Goals Make You Boring</a>
@@ -709,6 +711,15 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
           <p>If you don’t think it’s good, why would anyone else? Make the thing that you want. Make the thing that’s missing, and you can’t find already out there. Build what you think will be impressive or helpful.</p>
           <p>Chances are if you’re wanting it, somebody else is too. Make it first for you, and other people might also want it.</p>
         </div>
+        <div class="body" data-slug="it-doesnt-matter-what-happened-but-what-you-learned-does">
+          <div class="meta">1 min read · November 2026</div>
+          <img class="essay-art" alt="Line drawing of a smiling person with a quiver on their back, using tongs to hold up a golden nugget" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYwIDQwIDQ0MCAzODAiIHdpZHRoPSI4MDAiIGhlaWdodD0iNjkxIj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiNmZGZjZmEiLz4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTQxNDE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8cGF0aCBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gODAgNDAwIEggNDgwIi8+CjwhLS0gbGVncyAtLT4KPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDIwMCAyODIgTCAxNzYgNDAwIEwgMTQ2IDQwMCIvPgo8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMjA2IDI4MiBMIDIzNiA0MDAgTCAyNjYgNDAwIi8+CjwhLS0gdG9yc28gLS0+CjxwYXRoIHN0cm9rZS13aWR0aD0iOSIgZD0iTSAyMDAgMTUwIEMgMTg0IDIwMCAxODYgMjUwIDIwMCAyODIgTCAyMTQgMjgyIEMgMjI2IDI1MCAyMjYgMjAwIDIxMiAxNTAiLz4KPCEtLSBxdWl2ZXIgLS0+CjxwYXRoIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0iI2ZkZmNmYSIgZD0iTSAxNzYgMTY4IEwgMTUwIDE2MCBMIDEzMiAyNjIgTCAxNjAgMjcwIFoiLz4KPHBhdGggc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDE0NiAxNjIgTCAxMjggMTE2IE0gMTQwIDE2NCBMIDExMiAxMjggTSAxNTIgMTY0IEwgMTQwIDExMCIvPgo8cGF0aCBzdHJva2U9IiNiZjRlMGIiIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAxMzQgMTY0IEwgMTAwIDEwNiIvPgo8cGF0aCBzdHJva2U9IiNiZjRlMGIiIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAxMDAgMTA2IEwgMTE0IDEwOCBNIDEwMCAxMDYgTCAxMDAgMTIwIi8+CjwhLS0gaGVhZCAtLT4KPGNpcmNsZSBjeD0iMjE0IiBjeT0iMTA4IiByPSIzOCIgc3Ryb2tlLXdpZHRoPSI5IiBmaWxsPSIjZmRmY2ZhIi8+CjxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAyMjQgMTAwIHEgOCAtNiAxNiAwIE0gMjAwIDEwMCBxIDggLTYgMTYgMCIvPgo8cGF0aCBzdHJva2Utd2lkdGg9IjYiIGQ9Ik0gMjEyIDEyNCBRIDIyNiAxMzQgMjQyIDEyMiIvPgo8IS0tIGFybSB0byB0b25ncyAtLT4KPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDIxMiAxNzIgQyAyNTAgMTc2IDI4MCAxOTAgMzA0IDIwNiIvPgo8IS0tIHRvbmdzIC0tPgo8cGF0aCBzdHJva2Utd2lkdGg9IjgiIGQ9Ik0gMjk2IDIyMiBMIDQxOCAxMzIgTSAyOTYgMjMyIEwgNDI4IDE2OCIvPgo8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMjk2IDIyMiBRIDI4MiAyMjggMjk2IDIzMiIvPgo8IS0tIG51Z2dldCAtLT4KPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBmaWxsPSIjYmY0ZTBiIiBkPSJNIDQyNCAxMjggTCA0NDAgMTE2IEwgNDYyIDEyNCBMIDQ2OCAxNDQgTCA0NTYgMTY0IEwgNDM0IDE2MiBMIDQyMCAxNDggWiIvPgo8IS0tIHNwYXJrbGUgLS0+CjxwYXRoIHN0cm9rZS13aWR0aD0iNSIgZD0iTSA0NDAgODQgViAxMDAgTSA0NzYgMTAwIEwgNDY0IDExMCBNIDQ4NCAxNDAgSCA0NzAgTSA0MTAgMTAwIEwgNDIwIDExMCIvPgo8L2c+PC9zdmc+Cg==">
+          <p>A lot of things that happen are actually inconsequential. Sometimes, in the moment, such things seem important (for example, getting a crappy Kris Kringle gift such as a pair of tongs), but in the long term they are not.</p>
+          <p>Most people would have heard the rhetorical question that washes away much of the angst we feel when we’re hard done by: ‘Will this matter in five years’ time?’ I like this expression. It reminds me that watching every minute of the final round of The Masters will abso-bloody-lutely matter in five years’ time.</p>
+          <p>What’s often missed in this analysis is what’s learned from such insignificant events. Just because an event won’t change the course of human history doesn’t mean it won’t yield a golden nugget of knowledge.</p>
+          <p>Take a minor disagreement with a friend. Will it matter in five years? Probably not - that’s what makes it minor. But what did you learn from the interaction? About them? About you? About conflict resolution? About not getting your knickers in a twist next time the same thing crops up?</p>
+          <p>For me, the learning does matter. It’s that lesson that you’ll put in your quiver for next time something completely unimportant comes along. Who knows, it might even save another pair of twisted knickers.</p>
+        </div>
         <div class="body" data-slug="pain-is-obligatory-suffering-is-optional">
           <div class="meta">3 min read · November 2026</div>
           <img class="essay-art" alt="Line drawing of a grimacing person clutching a stitched scar on their chest, with an orange burst of pain" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjE1MCA0MCA1MDAgNDIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjY3MiI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjZmRmY2ZhIi8+CjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE0MTQxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KPHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBkPSJNIDE3MCA0NDAgSCA2MzAiLz4KPCEtLSBwYWluIGJ1cnN0IC0tPgo8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjgsLTQyKSIgc3Ryb2tlPSIjYmY0ZTBiIiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9IiNiZjRlMGIiIGQ9Ik0gNDAwIDIxNSBMIDQyNCAxODAgTCA0MzIgMjE4IEwgNDcwIDIwMCBMIDQ1MCAyMzYgTCA0OTAgMjUwIEwgNDQ4IDI2NCBMIDQ2OCAzMDAgTCA0MzAgMjg2IEwgNDIwIDMyNiBMIDM5OCAyOTIgTCAzNjYgMzIyIEwgMzcyIDI4MiBMIDMzNCAyODYgTCAzNjAgMjU2IEwgMzI2IDIzNiBMIDM2NiAyMzIgTCAzNTQgMTk2IEwgMzg4IDIxNiBaIi8+CjwhLS0gbGVncyAtLT4KPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDMxOCAzMDAgTCAyOTYgNDM2IEwgMjYyIDQzNiIvPgo8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMzUyIDMwMCBMIDM3MiA0MzYgTCA0MDYgNDM2Ii8+CjwhLS0gdG9yc28gKGh1bmNoZWQpIC0tPgo8cGF0aCBzdHJva2Utd2lkdGg9IjkiIGQ9Ik0gMzE4IDE1MCBDIDI5MiAxOTAgMjkwIDI1MCAzMTggMzAwIEwgMzUyIDMwMCBDIDM3MiAyNTAgMzY2IDE5MCAzNDYgMTUwIi8+CjwhLS0gaGVhZCAtLT4KPGNpcmNsZSBjeD0iMzM0IiBjeT0iMTA2IiByPSI0MiIgc3Ryb2tlLXdpZHRoPSI5IiBmaWxsPSIjZmRmY2ZhIi8+CjxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMzYgOTYgTCAzNTIgMTAyIE0gMzUyIDkwIEwgMzM2IDk4Ii8+CjxwYXRoIHN0cm9rZS13aWR0aD0iNiIgZD0iTSAzMTIgMTAwIEwgMzI2IDEwOCBNIDMyNiA5NCBMIDMxMiAxMDQiLz4KPHBhdGggc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDMxNiAxMjggUSAzMjYgMTIwIDMzNiAxMjggVCAzNTYgMTI4Ii8+CjwhLS0gdGVhcnMgLS0+CjxwYXRoIHN0cm9rZT0iIzE0MTQxNCIgZmlsbD0iI2ZkZmNmYSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNIDMwMCAxMjQgcSAtOCAxNCAwIDIwIHEgOCAtNiAwIC0yMCB6Ii8+CjwhLS0gYXJtIGNsdXRjaGluZyBjaGVzdCAtLT4KPHBhdGggc3Ryb2tlLXdpZHRoPSI5IiBkPSJNIDM0MCAxNjAgQyAzOTIgMTgwIDM5NiAyNTAgMzUwIDIzNiIvPgo8cGF0aCBzdHJva2Utd2lkdGg9IjciIGQ9Ik0gMzUwIDIzNiBMIDMyOCAyMjYgTSAzNTAgMjM2IEwgMzMyIDI0NCIvPgo8IS0tIHNjYXIgLS0+CjxwYXRoIHN0cm9rZT0iIzE0MTQxNCIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNIDMzMCAxNzAgViAyNTgiLz4KPHBhdGggc3Ryb2tlPSIjMTQxNDE0IiBzdHJva2Utd2lkdGg9IjQiIGQ9Ik0gMzIwIDE4MiBIIDM0MCBNIDMyMCAxOTggSCAzNDAgTSAzMjAgMjE0IEggMzQwIE0gMzIwIDIzMCBIIDM0MCBNIDMyMCAyNDYgSCAzNDAiLz4KPCEtLSBwYWluIGxpbmVzIC0tPgo8cGF0aCBzdHJva2U9IiMxNDE0MTQiIHN0cm9rZS13aWR0aD0iNSIgZD0iTSAyMzIgMTUwIEwgMjU4IDE2OCBNIDIyNCAyMDYgTCAyNTYgMjEwIE0gMjM2IDI2MiBMIDI2MiAyNTAgTSA0NTIgMTI4IEwgNDMyIDE1MCBNIDUwMCAxOTAgTCA0NjggMTk2Ii8+CjwvZz48L3N2Zz4K">
@@ -830,6 +841,7 @@ blockquote { margin: 1.5em 0; padding-left: 20px; border-left: 2px solid var(--r
     'live-below-your-means': 'Live Below Your Means',
     'develop-gratitude-instead-of-chasing-happiness': 'Develop Gratitude Instead of Chasing Happiness',
     'harness-the-power-of-compounding': 'Harness the Power of Compounding',
+    'it-doesnt-matter-what-happened-but-what-you-learned-does': 'It doesn\u2019t matter what happened. But what you learned does',
     'pain-is-obligatory-suffering-is-optional': 'Pain Is Obligatory, Suffering Is Optional',
     'how-to-slow-down': 'How to Slow Down',
     'less-is-more': 'Less Is More',
@@ -884,7 +896,7 @@ el.addEventListener('mouseleave',function(e){var t=e.relatedTarget;if(t&&t.close
       document.getElementById('topic-title').textContent = tt;
       var tl = document.getElementById('topic-list'), tk = tn.querySelectorAll('a.intro-link');
       tl.innerHTML = '';
-      for (var u = 0; u < tk.length; u++) { var c = tk[u].cloneNode(true); c.classList.remove('more'); tl.appendChild(c); }
+      for (var u = 0; u < tk.length; u++) { var c = tk[u].cloneNode(true); c.classList.remove('more'); var ps = (c.getAttribute('href') || '').split('/post/')[1], pb = ps && document.querySelector('.body[data-slug="' + ps + '"] .meta'); if (pb) { var dm = pb.textContent.replace(/^.*?·\s*/, '').trim(); if (/^[A-Z][a-z]+ \d{4}$/.test(dm)) { var de = document.createElement('em'); de.className = 'topic-date'; de.textContent = dm; c.appendChild(de); } } tl.appendChild(c); }
       document.title = tt + ' | Luke W. Jennings';
     } else if (key === 'newsletter') {
       document.title = 'Newsletter | Luke W. Jennings';
